@@ -1,10 +1,12 @@
 # Mobility EHR
 
-Mobility EHR is my final project for CSE 340. I chose Option A and am building an electronic health record prototype for a physical therapy clinic. The goal is to help staff manage intake requests and keep patient charts, therapist notes, and treatment plans organized throughout each care episode.
+Mobility EHR is my final project for CSE 340. I chose Option A and am building an electronic health record prototype for a physical therapy clinic. My goal is to help staff is to help staff manage intake requests and keep patient charts, therapist notes, and treatment plans organized throughout each care episode.
 
 Patients will have a limited portal where they can view their home programs and treatment updates and manage their own progress logs and symptom journal entries. All patient data used for development and demonstration will be fictional.
 
-**Project status:** Planning and initial setup. This README describes what I intend to build and will be updated as the project develops.
+**Project status:** Planning and initial setup. This README describes what I intend to build. I will update it as the project develops.
+
+I created a separate [project plan](docs/PROJECT_PLAN.md) to work through ideas, track what I’ve completed, and stay focused on my next steps. It also includes a parking lot for ideas and features I may revisit later.
 
 ## User roles
 
@@ -16,7 +18,7 @@ Education resources will be stored in PostgreSQL, so saved changes appear when u
 
 ### Physical Therapist
 
-Therapists will work with their assigned patients. They will review intake information, document evaluations and follow-up visits, record interactions such as phone calls, and create treatment plans with goals.
+All clinic staff will be able to view patient intake information, evaluations, and home programs. Therapists will document evaluations and follow-up visits, record interactions such as phone calls, and create treatment plans with goals. Any therapist will be able to submit a proposed care update for any patient. Proposed updates will need staff review and approval before they appear as approved care updates. I still need to decide whether approval belongs to the evaluating therapist or another authorized staff member.
 
 ### Patient
 
@@ -54,7 +56,7 @@ I will choose data types that fit the information being stored and use foreign k
 
 ## Access and security
 
-Middleware will check login status, roles, and record permissions. Patients will access only their own information, therapists will access only their assigned patients, and administrators will have access to the management tools described above.
+Middleware will check login status, roles, and record permissions. Patients will access only their own information. Staff access will follow the shared viewing and proposed-update rules described above, while administrators will have access to the management tools. Patients will not be able to change clinical notes, approve care updates, or use staff and administrator functions.
 
 Authentication will use secure session settings and bcrypt password hashing. All application forms will include server-side validation and input sanitization, including checks for empty or inappropriate submissions. Database queries will be parameterized. Errors that need centralized handling will be passed to a global error handler, which will display helpful messages without exposing internal system details.
 
