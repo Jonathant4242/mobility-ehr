@@ -1,0 +1,8 @@
+node_modules/
+coverage/
+dist/
+package-lock.json
+.env
+.env.*
+# EJS is checked separately because generic HTML formatting can alter tags.
+**/*.ejs

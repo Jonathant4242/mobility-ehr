@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="/css/admin-dashboard.css" />
+    <link rel="stylesheet" href="/css/admin-resources.css" />
+  </head>
+  <body class="admin-dashboard resources-page">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <header class="site-header">
+      <div class="page-width header-content">
+        <a class="brand" href="/" aria-label="Mobility EHR home">
+          <span class="brand-mark" aria-hidden="true">M</span>
+          <span>Mobility <span class="brand-label">EHR</span></span>
+        </a>
+        <nav aria-label="Main navigation">
+          <a href="/admin">Dashboard</a>
+          <a href="/admin/intake">New intake</a>
+          <a href="/admin/users">User accounts</a>
+          <a href="/admin/resources" aria-current="page">Resources</a>
+          <a href="/admin#clinic-management">Clinic management</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content" class="page-width">
+      <div class="page-heading">
+        <div>
+          <p class="eyebrow">Clinic administration</p>
+          <h1>Patient Education Resources</h1>
+          <p class="intro">
+            Review the planned resource fields and library layout.
+          </p>
+        </div>
+        <a class="primary-link" href="/admin/resources/new"
+          >Add resource <span aria-hidden="true">+</span></a
+        >
+      </div>
+
+      <aside class="preview-notice" aria-label="Prototype notice">
+        <strong>Layout preview</strong>
+        <span
+          >Review the layout and fields. Records and actions will be added
+          later.</span
+        >
+      </aside>
+
+      <section class="dashboard-section" aria-labelledby="overview-heading">
+        <div class="section-heading">
+          <h2 id="overview-heading">Library overview</h2>
+          <p>
+            Planned count and status areas. Library records are not connected
+            yet.
+          </p>
+        </div>
+        <%# Dashes indicate that records are not connected, rather than a zero total. %>
+        <div class="resource-summary">
+          <article class="summary-card summary-total">
+            <h3>Total resources</h3>
+            <p class="summary-count" aria-label="Not connected">&mdash;</p>
+          </article>
+          <article class="summary-card summary-published">
+            <h3>Published</h3>
+            <p class="summary-count" aria-label="Not connected">&mdash;</p>
+          </article>
+          <article class="summary-card summary-draft">
+            <h3>Draft</h3>
+            <p class="summary-count" aria-label="Not connected">&mdash;</p>
+          </article>
+        </div>
+      </section>
+
+      <section
+        class="dashboard-section library-panel panel"
+        aria-labelledby="library-heading"
+      >
+        <div class="panel-heading">
+          <h2 id="library-heading">Resource library</h2>
+          <p>Search and filter controls are shown for layout review.</p>
+        </div>
+
+        <%# Filtering remains disabled until library records are connected. %>
+        <div
+          class="resource-filters"
+          role="group"
+          aria-label="Planned resource filters"
+        >
+          <div class="filter-search">
+            <label for="resource-search">Search resources</label>
+            <input
+              id="resource-search"
+              name="q"
+              type="search"
+              maxlength="100"
+              placeholder="Title, summary, or resource ID"
+              disabled
+            />
+          </div>
+          <div class="filter-field">
+            <label for="resource-category">Category</label>
+            <select id="resource-category" name="category" disabled>
+              <option value="">All categories</option>
+            </select>
+          </div>
+          <div class="filter-field">
+            <label for="resource-status">Resource status</label>
+            <select id="resource-status" name="status" disabled>
+              <option value="">All statuses</option>
+              <option value="draft">Draft</option>
+              <option value="published">Published</option>
+            </select>
+          </div>
+          <div class="filter-actions">
+            <button class="primary-link" type="button" disabled>
+              Apply filters
+            </button>
+          </div>
+        </div>
+
+        <div class="empty-state">
+          <h3>Resource library layout</h3>
+          <p>
+            Resource records will appear here after the backend is connected.
+          </p>
+          <p>
+            Planned fields: Title, Category, Summary, Content, Status, and Last
+            updated.
+          </p>
+        </div>
+
+        <p class="library-note">
+          Open Add resource to review the blank form. Saving, editing, deleting,
+          and publishing will be connected later.
+        </p>
+      </section>
+    </main>
+
+    <footer class="site-footer page-width">
+      <p>Mobility EHR</p>
+      <p>Educational prototype &middot; Interface design</p>
+    </footer>
+  </body>
+</html>

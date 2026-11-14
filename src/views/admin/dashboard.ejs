@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="/css/admin-dashboard.css" />
+  </head>
+  <body class="admin-dashboard">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <header class="site-header">
+      <div class="page-width header-content">
+        <a class="brand" href="/" aria-label="Mobility EHR home">
+          <span class="brand-mark" aria-hidden="true">M</span>
+          <span>Mobility <span class="brand-label">EHR</span></span>
+        </a>
+        <nav aria-label="Main navigation">
+          <a href="/admin" aria-current="page">Dashboard</a>
+          <a href="/admin/users">User accounts</a>
+          <a href="/admin/resources">Resources</a>
+          <a href="#intake-requests">Intake requests</a>
+          <a href="#clinic-management">Clinic management</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content" class="page-width">
+      <div class="page-heading">
+        <div>
+          <p class="eyebrow">Clinic administration</p>
+          <h1>Admin Dashboard</h1>
+          <p class="intro">
+            An overview of care episodes and the requests that need attention.
+          </p>
+        </div>
+        <a class="primary-link" href="/admin/intake"
+          >New intake <span aria-hidden="true">+</span></a
+        >
+      </div>
+
+      <aside class="preview-notice" aria-label="Prototype notice">
+        <strong>Layout preview</strong>
+        <span
+          >Review the layout and fields. Records and actions will be added
+          later.</span
+        >
+      </aside>
+
+      <section class="dashboard-section" aria-labelledby="overview-heading">
+        <div class="section-heading">
+          <h2 id="overview-heading">Care Overview</h2>
+          <p>
+            These areas will show care-episode totals once records are
+            connected.
+          </p>
+        </div>
+        <div class="summary-grid">
+          <%# Dashes indicate that records are not connected, rather than a zero
+          total. %>
+          <article class="summary-card stage-intake">
+            <h3>Intake Submitted</h3>
+            <p class="summary-count" aria-label="Not connected">&mdash;</p>
+            <p class="summary-description">Requests waiting for review.</p>
+          </article>
+          <article class="summary-card stage-review">
+            <h3>Under Review</h3>
+            <p class="summary-count" aria-label="Not connected">&mdash;</p>
+            <p class="summary-description">Requests awaiting evaluation.</p>
+          </article>
+          <article class="summary-card stage-active">
+            <h3>Active Treatment</h3>
+            <p class="summary-count" aria-label="Not connected">&mdash;</p>
+            <p class="summary-description">Episodes with ongoing care.</p>
+          </article>
+          <article class="summary-card stage-closed">
+            <h3>Closed</h3>
+            <p class="summary-count" aria-label="Not connected">&mdash;</p>
+            <p class="summary-description">
+              Episodes or requests that have ended.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section
+        id="intake-requests"
+        class="dashboard-section panel"
+        aria-labelledby="intake-heading"
+      >
+        <div class="panel-heading">
+          <h2 id="intake-heading">Intake Requests</h2>
+          <p>
+            Submitted requests and episodes under review, with current therapist
+            assignments.
+          </p>
+        </div>
+
+        <div
+          class="table-container"
+          role="region"
+          aria-label="Intake request list"
+          tabindex="0"
+        >
+          <table>
+            <caption class="visually-hidden">
+              Planned intake request columns
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col">Patient</th>
+                <th scope="col">Date recorded</th>
+                <th scope="col">Assigned therapist</th>
+                <th scope="col">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td colspan="4" class="empty-state">
+                  <h3>Intake list layout</h3>
+                  <p>
+                    Intake requests will appear here after records are
+                    connected.
+                  </p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="panel-note">
+          Open New intake to review the fields and form layout.
+        </p>
+      </section>
+
+      <section
+        id="clinic-management"
+        class="dashboard-section"
+        aria-labelledby="management-heading"
+      >
+        <div class="section-heading">
+          <h2 id="management-heading">Clinic Management</h2>
+          <p>
+            Review available previews and the management areas planned next.
+          </p>
+        </div>
+        <div class="management-grid">
+          <article class="management-card">
+            <span class="planned-label">UI preview</span>
+            <h3><a href="/admin/users">User accounts and roles</a></h3>
+            <p>
+              Review the account directory layout and planned administrator,
+              therapist, and patient permissions.
+            </p>
+          </article>
+          <article class="management-card">
+            <span class="planned-label">UI preview</span>
+            <h3><a href="/admin/resources">Patient education resources</a></h3>
+            <p>
+              Review the library layout, planned filters, and resource fields.
+            </p>
+          </article>
+          <article class="management-card">
+            <span class="planned-label">Planned</span>
+            <h3>Flagged patient submissions</h3>
+            <p>
+              Review patient submissions that have been flagged for staff
+              attention.
+            </p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer page-width">
+      <p>Mobility EHR</p>
+      <p>Educational prototype &middot; Interface design</p>
+    </footer>
+  </body>
+</html>

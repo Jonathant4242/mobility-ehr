@@ -1,0 +1,390 @@
+.admin-dashboard {
+  --ink: #18382e;
+  --muted: #52665d;
+  --line: #d9e3dc;
+  --accent: #245f4e;
+  margin: 0;
+  background: #f4f7f3;
+  color: var(--ink);
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.admin-dashboard *,
+.admin-dashboard *::before,
+.admin-dashboard *::after {
+  box-sizing: border-box;
+}
+.admin-dashboard .page-width {
+  width: min(1160px, calc(100% - 48px));
+  margin-inline: auto;
+}
+.admin-dashboard a {
+  color: var(--accent);
+  text-underline-offset: 0.25em;
+}
+.admin-dashboard :focus-visible {
+  outline: 3px solid #9c570a;
+  outline-offset: 4px;
+}
+.admin-dashboard h1,
+.admin-dashboard h2,
+.admin-dashboard h3,
+.admin-dashboard p {
+  margin: 0;
+}
+.admin-dashboard h1 {
+  font-size: clamp(1.9rem, 4vw, 2.75rem);
+  line-height: 1.2;
+  letter-spacing: -0.04em;
+}
+.admin-dashboard h2 {
+  font-size: 1.35rem;
+  line-height: 1.35;
+}
+.admin-dashboard h3 {
+  font-size: 1rem;
+  line-height: 1.45;
+}
+.admin-dashboard section {
+  scroll-margin-top: 24px;
+}
+
+.admin-dashboard .skip-link {
+  position: absolute;
+  top: -100px;
+  left: 16px;
+  padding: 12px 18px;
+  background: white;
+  z-index: 2;
+}
+.admin-dashboard .skip-link:focus {
+  top: 12px;
+}
+.admin-dashboard .site-header {
+  background: white;
+  border-bottom: 1px solid var(--line);
+}
+.admin-dashboard .header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding-block: 20px;
+}
+.admin-dashboard .brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  font-size: 1.3rem;
+  font-weight: 750;
+  white-space: nowrap;
+}
+.admin-dashboard .brand-mark {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: var(--accent);
+  color: white;
+  font-size: 1.1rem;
+}
+.admin-dashboard .brand-label {
+  font-weight: 450;
+}
+.admin-dashboard nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+}
+.admin-dashboard nav a {
+  padding-block: 5px;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+.admin-dashboard nav a:hover {
+  text-decoration: underline;
+}
+.admin-dashboard nav a[aria-current='page'] {
+  font-weight: 700;
+  border-bottom: 2px solid var(--accent);
+}
+
+.admin-dashboard main {
+  padding-top: 40px;
+}
+.admin-dashboard .page-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+}
+.admin-dashboard .eyebrow {
+  margin-bottom: 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.admin-dashboard .intro {
+  max-width: 650px;
+  margin-top: 12px;
+  color: var(--muted);
+}
+.admin-dashboard .primary-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 12px 18px;
+  border-radius: 8px;
+  background: var(--accent);
+  color: white;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 650;
+  white-space: nowrap;
+}
+.admin-dashboard .primary-link:hover {
+  background: #194535;
+}
+.admin-dashboard .preview-notice {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  margin-top: 28px;
+  padding: 12px 16px;
+  background: #e9f0e9;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font-size: 0.875rem;
+}
+.admin-dashboard .preview-notice strong {
+  white-space: nowrap;
+}
+.admin-dashboard .dashboard-section {
+  margin-top: 32px;
+}
+.admin-dashboard .section-heading {
+  margin-bottom: 16px;
+}
+.admin-dashboard .section-heading p,
+.admin-dashboard .panel-heading p {
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.admin-dashboard .summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+.admin-dashboard .summary-card {
+  padding: 20px;
+  background: white;
+  border: 1px solid var(--line);
+  border-top: 4px solid #a9b9ae;
+  border-radius: 10px;
+}
+.admin-dashboard .stage-intake {
+  border-top-color: #c58d34;
+}
+.admin-dashboard .stage-review {
+  border-top-color: #6993ac;
+}
+.admin-dashboard .stage-active {
+  border-top-color: #43846b;
+}
+.admin-dashboard .summary-count {
+  margin-top: 10px;
+  font-size: 2.3rem;
+  line-height: 1.3;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.admin-dashboard .summary-description {
+  margin-top: 6px;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.admin-dashboard .panel {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.admin-dashboard .panel-heading {
+  padding: 24px;
+}
+.admin-dashboard .table-container {
+  max-width: 100%;
+  overflow-x: auto;
+}
+.admin-dashboard .table-container:focus-visible {
+  outline-offset: -4px;
+}
+.admin-dashboard table {
+  width: 100%;
+  min-width: 720px;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.875rem;
+}
+.admin-dashboard thead {
+  background: #f5f8f5;
+}
+.admin-dashboard th,
+.admin-dashboard td {
+  padding: 16px 24px;
+  border-block: 1px solid var(--line);
+  vertical-align: middle;
+}
+.admin-dashboard thead th {
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 650;
+}
+.admin-dashboard tbody th {
+  font-weight: 600;
+}
+.admin-dashboard .patient-name,
+.admin-dashboard .record-id {
+  display: block;
+}
+.admin-dashboard .record-id {
+  margin-top: 2px;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--muted);
+}
+.admin-dashboard .status-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 650;
+  white-space: nowrap;
+}
+.admin-dashboard .status-intake {
+  background: #fcf0d9;
+  color: #755016;
+}
+.admin-dashboard .status-review {
+  background: #e9f1f7;
+  color: #355a74;
+}
+.admin-dashboard .panel-note {
+  padding: 16px 24px;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+.admin-dashboard .empty-state {
+  padding: 32px 24px;
+  border-block: 1px solid var(--line);
+}
+.admin-dashboard .empty-state p {
+  max-width: min(60ch, calc(100vw - 96px));
+  margin-top: 6px;
+  color: var(--muted);
+}
+
+.admin-dashboard .management-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+.admin-dashboard .management-card {
+  padding: 22px;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+.admin-dashboard .planned-label {
+  display: inline-block;
+  margin-bottom: 12px;
+  color: var(--muted);
+  font-size: 0.7rem;
+  font-weight: 650;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.admin-dashboard .management-card p {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+.admin-dashboard .site-footer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  margin-top: 44px;
+  padding-block: 22px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+.admin-dashboard .visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  clip-path: inset(50%);
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+  .admin-dashboard .header-content {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .admin-dashboard .page-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .admin-dashboard .summary-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .admin-dashboard .management-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  .admin-dashboard .page-width {
+    width: calc(100% - 32px);
+  }
+  .admin-dashboard main {
+    padding-top: 28px;
+  }
+  .admin-dashboard nav {
+    gap: 8px 16px;
+  }
+  .admin-dashboard .summary-grid {
+    grid-template-columns: 1fr;
+  }
+  .admin-dashboard .panel-heading {
+    padding: 20px;
+  }
+  .admin-dashboard .primary-link {
+    white-space: normal;
+  }
+  .admin-dashboard .dashboard-section {
+    margin-top: 26px;
+  }
+}

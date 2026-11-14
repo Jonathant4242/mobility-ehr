@@ -1,6 +1,12 @@
 # Mobility EHR project plan
 
-This is my working checklist for building Mobility EHR. Checked items are in place; unchecked items are still planned. I will update this as I build and test each part. All development and demonstration data will be fictional.
+This is my working checklist for building Mobility EHR. Checked items are in place; unchecked items are still planned. I will update this as I build and test each part. When I add development and demonstration records later, I will use fictional data.
+
+I use `npm run check` to review JavaScript, formatting, and EJS syntax before committing.
+
+## Current focus
+
+I am finishing the frontend first: page layouts, fields, navigation, and responsive styling. I will keep record lists empty and leave saving and filtering disabled while I review the screens. I will connect the backend after the frontend looks right.
 
 ## What works now
 
@@ -8,13 +14,19 @@ This is my working checklist for building Mobility EHR. Checked items are in pla
 - [x] Add start and development scripts.
 - [x] Render the Mobility EHR home page through an Express route.
 - [x] Serve public files and connect separate 404 and 500 error pages.
+- [x] Add admin dashboard, intake, account directory, and resource library layouts with working page navigation.
+- [x] Add responsive admin styles, labeled form fields, and empty record lists.
+- [x] Add a blank education-resource form linked from the library, with saving disabled.
+- [x] Install the PostgreSQL client package (`pg`) for later use.
+- [x] Configure local ESLint, Prettier, and EJS syntax checks. Keep the coding
+      notes, editor preferences, and optional GitHub Actions workflow local.
 
-The header, footer, and stylesheet currently contain planning comments only. They are not finished features. Authentication, the database, and the role dashboards are not built yet.
+The admin pages are interface previews. They do not contain sample records or save information. Authentication, database connections, and administrative actions are still planned. The shared header, footer, and global stylesheet contain planning comments; the admin pages currently use their own markup and page styles.
 
 ## Build order
 
-1. **Finish the page structure.** Build the shared header and footer, include them in the pages, and add basic responsive styles. Add role-specific navigation when authentication is ready.
-2. **Set up configuration and the database.** I will create a local .env for my settings and a documented .env.example with placeholder values. I will configure environment-variable loading, connect PostgreSQL, design the database relationships, and export an ERD from pgAdmin. Actual credentials will stay out of source control.
+1. **Finish and review the frontend.** Settle the admin layouts and fields before adding records or backend behavior. Check navigation and mobile layouts, then build the remaining planned screens. Move repeated markup into shared partials once the design is settled. Add role-specific navigation when authentication is ready.
+2. **Set up configuration and the database after the frontend review.** I will create a local .env for my settings and a documented .env.example with placeholder values. I will configure environment-variable loading, connect PostgreSQL, design the database relationships, and export an ERD from pgAdmin. Actual credentials will stay out of source control.
 3. **Build login and access controls.** Add accounts, bcrypt password hashing, express-session, login/logout, and server-side role and record checks. Test access by visiting protected routes directly.
 4. **Build the admin tools.** Start with education-resource CRUD. Then add account and role management, manual intake entry, therapist assignments, case views, and submission flagging.
 5. **Build the care workflow.** Add intake reviews, evaluations, encounters, treatment plans, and home programs. Record who changed each episode status and when. Resolve the approval rule before building proposed care updates and approval actions.
