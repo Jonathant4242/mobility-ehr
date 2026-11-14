@@ -147,3 +147,8 @@ vite.config.ts.timestamp-*
 
 # Turbo Repo
 .turbo
+
+# Local coding notes, editor preferences, and optional automation
+/docs/CODING_STYLE.md
+/.vscode/
+/.github/

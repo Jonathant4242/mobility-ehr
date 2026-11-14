@@ -82,3 +82,10 @@ Any potential use with real patient data would require a separate review of secu
 ## End-of-course evaluation
 
 For the final evaluation, I will demonstrate a patient moving through the care workflow and explain the code behind it. I will be prepared to discuss the database relationships, request flow, access controls, a challenge I solved, and what I learned while building the project.
+
+## Code quality
+
+Run `npm run check` before committing to check JavaScript, formatting, and EJS
+syntax. Use `npm run format` to format files and `npm run lint:fix` for available
+lint fixes. These checks run locally; this repository does not include a GitHub
+Actions workflow. EJS templates are syntax-checked separately from Prettier.

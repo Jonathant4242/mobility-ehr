@@ -1,0 +1,167 @@
+.users-page .role-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+.users-page .summary-card {
+  min-width: 0;
+}
+.users-page .summary-card.role-admin {
+  border-top-color: #6993ac;
+}
+.users-page .summary-card.role-therapist {
+  border-top-color: #43846b;
+}
+.users-page .summary-card.role-patient {
+  border-top-color: #c58d34;
+}
+.users-page .role-description {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+.users-page .role-note {
+  margin-top: 16px;
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+.users-page .account-filters {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) repeat(2, minmax(0, 1fr)) auto;
+  align-items: end;
+  gap: 16px;
+  padding: 0 24px 20px;
+}
+.users-page .filter-search,
+.users-page .filter-field {
+  min-width: 0;
+}
+.users-page .account-filters label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.875rem;
+  font-weight: 650;
+}
+.users-page .account-filters input,
+.users-page .account-filters select {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  min-height: 48px;
+  padding: 10px 12px;
+  border: 1px solid #7a9083;
+  border-radius: 6px;
+  background: white;
+  color: var(--ink);
+  font: inherit;
+  font-size: 1rem;
+}
+.users-page .filter-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 16px;
+}
+.users-page .filter-actions .primary-link {
+  min-height: 48px;
+  max-width: 100%;
+  border: 0;
+  font-family: inherit;
+  white-space: normal;
+  cursor: pointer;
+}
+.users-page .secondary-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding-block: 8px;
+}
+
+/* Prevent inherited hover styles from making disabled actions appear active. */
+.users-page .account-filters input:disabled,
+.users-page .account-filters select:disabled {
+  background: #f1f4f1;
+  border-color: var(--line);
+  color: var(--muted);
+  opacity: 1;
+  cursor: not-allowed;
+}
+.users-page .filter-actions .primary-link:disabled,
+.users-page .filter-actions .primary-link:disabled:hover {
+  background: #e0e7e1;
+  color: var(--muted);
+  opacity: 1;
+  cursor: not-allowed;
+}
+
+/* Keep wide tables from expanding the page. */
+.users-page .table-container {
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: auto;
+}
+.users-page table {
+  min-width: 860px;
+}
+.users-page .empty-state p {
+  max-width: min(60ch, calc(100vw - 96px));
+}
+.users-page .account-email {
+  max-width: 240px;
+  overflow-wrap: anywhere;
+}
+.users-page .account-role,
+.users-page .account-status {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 650;
+  white-space: nowrap;
+}
+.users-page .account-role.role-admin {
+  background: #e9f1f7;
+  color: #355a74;
+}
+.users-page .account-role.role-therapist {
+  background: #e9f0e9;
+  color: #245f4e;
+}
+.users-page .account-role.role-patient {
+  background: #fcf0d9;
+  color: #755016;
+}
+.users-page .account-active {
+  background: #e9f0e9;
+  color: #245f4e;
+}
+.users-page .account-inactive {
+  background: #eef0ee;
+  color: #52665d;
+}
+
+@media (max-width: 1000px) {
+  .users-page .account-filters {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .users-page .filter-search,
+  .users-page .filter-actions {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 760px) {
+  .users-page .role-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  .users-page .account-filters {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 0 20px 18px;
+  }
+  .users-page .filter-actions .primary-link {
+    flex: 1;
+  }
+}

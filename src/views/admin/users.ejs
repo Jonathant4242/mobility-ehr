@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="/css/admin-dashboard.css" />
+    <link rel="stylesheet" href="/css/admin-users.css" />
+  </head>
+  <body class="admin-dashboard users-page">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <header class="site-header">
+      <div class="page-width header-content">
+        <a class="brand" href="/" aria-label="Mobility EHR home">
+          <span class="brand-mark" aria-hidden="true">M</span>
+          <span>Mobility <span class="brand-label">EHR</span></span>
+        </a>
+        <nav aria-label="Main navigation">
+          <a href="/admin">Dashboard</a>
+          <a href="/admin/intake">New intake</a>
+          <a href="/admin/users" aria-current="page">User accounts</a>
+          <a href="/admin/resources">Resources</a>
+          <a href="/admin#clinic-management">Clinic management</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content" class="page-width">
+      <div class="page-heading">
+        <div>
+          <p class="eyebrow">Clinic administration</p>
+          <h1>User Accounts and Roles</h1>
+          <p class="intro">
+            Review the account directory layout and the responsibilities planned
+            for each role.
+          </p>
+        </div>
+        <a class="secondary-link" href="/admin">Back to dashboard</a>
+      </div>
+
+      <aside class="preview-notice" aria-label="Prototype notice">
+        <strong>Layout preview</strong>
+        <span
+          >Review the layout and fields. Records and actions will be added
+          later.</span
+        >
+      </aside>
+
+      <section
+        id="role-guide"
+        class="dashboard-section"
+        aria-labelledby="roles-heading"
+      >
+        <div class="section-heading">
+          <h2 id="roles-heading">Roles at a glance</h2>
+          <p>The responsibilities below describe the planned permissions.</p>
+        </div>
+        <div class="role-grid">
+          <article class="summary-card role-admin">
+            <h3>Clinic Admin</h3>
+            <p class="role-description">
+              Manage accounts, roles, intake requests, therapist assignments,
+              education resources, and flagged submissions.
+            </p>
+          </article>
+          <article class="summary-card role-therapist">
+            <h3>Physical Therapist</h3>
+            <p class="role-description">
+              View clinic intake information, evaluations, and home programs
+              across patients. Document care and propose updates for any
+              patient.
+            </p>
+          </article>
+          <article class="summary-card role-patient">
+            <h3>Patient</h3>
+            <p class="role-description">
+              View their own home programs and approved care updates. Manage
+              their own home-program logs and symptom journals.
+            </p>
+          </article>
+        </div>
+        <p class="role-note">
+          Clinic staff will share viewing access to intake information,
+          evaluations, and home programs. Therapists will not change account
+          roles, and patients will access only their own information.
+          Care-update approval responsibilities are still being defined.
+        </p>
+      </section>
+
+      <section
+        class="dashboard-section panel"
+        aria-labelledby="accounts-heading"
+      >
+        <div class="panel-heading">
+          <h2 id="accounts-heading">Account directory</h2>
+          <p>
+            Search and filter controls are shown for layout review. Account
+            status is separate from care-episode status.
+          </p>
+        </div>
+
+        <%# Filtering remains disabled until account records are connected. %>
+        <div
+          class="account-filters"
+          role="group"
+          aria-label="Planned account filters"
+        >
+          <div class="filter-search">
+            <label for="account-search">Search accounts</label>
+            <input
+              id="account-search"
+              name="q"
+              type="search"
+              maxlength="100"
+              placeholder="Name, email, or account ID"
+              disabled
+            />
+          </div>
+          <div class="filter-field">
+            <label for="account-role">Role</label>
+            <select id="account-role" name="role" disabled>
+              <option value="">All roles</option>
+              <option value="admin">Clinic Admin</option>
+              <option value="therapist">Physical Therapist</option>
+              <option value="patient">Patient</option>
+            </select>
+          </div>
+          <div class="filter-field">
+            <label for="account-status">Account status</label>
+            <select id="account-status" name="status" disabled>
+              <option value="">All statuses</option>
+              <option value="active">Active</option>
+              <option value="inactive">Inactive</option>
+            </select>
+          </div>
+          <div class="filter-actions">
+            <button class="primary-link" type="button" disabled>
+              Apply filters
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="table-container"
+          role="region"
+          aria-label="Account directory table"
+          tabindex="0"
+        >
+          <table>
+            <caption class="visually-hidden">
+              Planned account directory columns
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col">Account</th>
+                <th scope="col">Email</th>
+                <th scope="col">Role</th>
+                <th scope="col">Account status</th>
+                <th scope="col">Created</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td colspan="5" class="empty-state">
+                  <h3>Account list layout</h3>
+                  <p>
+                    Account records will appear here after the backend is
+                    connected.
+                  </p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="panel-note">
+          Creating accounts, editing details, assigning roles, and changing
+          account status are planned for the account form.
+        </p>
+      </section>
+    </main>
+
+    <footer class="site-footer page-width">
+      <p>Mobility EHR</p>
+      <p>Educational prototype &middot; Interface design</p>
+    </footer>
+  </body>
+</html>

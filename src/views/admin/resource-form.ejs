@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="/css/admin-dashboard.css" />
+    <link rel="stylesheet" href="/css/admin-resource-form.css" />
+  </head>
+  <body class="admin-dashboard resource-form-page">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <header class="site-header">
+      <div class="page-width header-content">
+        <a class="brand" href="/" aria-label="Mobility EHR home">
+          <span class="brand-mark" aria-hidden="true">M</span>
+          <span>Mobility <span class="brand-label">EHR</span></span>
+        </a>
+        <nav aria-label="Main navigation">
+          <a href="/admin">Dashboard</a>
+          <a href="/admin/intake">New intake</a>
+          <a href="/admin/users">User accounts</a>
+          <a href="/admin/resources" aria-current="location">Resources</a>
+          <a href="/admin#clinic-management">Clinic management</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content" class="page-width">
+      <div class="page-heading">
+        <div>
+          <p class="eyebrow">Clinic administration</p>
+          <h1>Add Education Resource</h1>
+          <p class="intro">
+            Organize the information patients will find in the resource library.
+          </p>
+        </div>
+        <a class="secondary-link" href="/admin/resources"
+          >Back to resource library</a
+        >
+      </div>
+
+      <aside class="preview-notice" aria-label="Prototype notice">
+        <strong>Layout preview</strong>
+        <span
+          >Review the blank fields and layout. Saving and publishing are not
+          available yet.</span
+        >
+      </aside>
+
+      <%#
+            TODO: Add permissions, server-side
+            validation, and persistence before enabling resource submission.
+        %>
+      <form
+        id="resource-form"
+        class="resource-form"
+        action="/admin/resources"
+        method="post"
+        autocomplete="off"
+        aria-describedby="save-note"
+      >
+        <p class="required-note">
+          Fields marked <span aria-hidden="true">*</span> are required.
+        </p>
+
+        <fieldset class="form-section">
+          <legend>Resource details</legend>
+          <p class="section-intro">Give the resource a clear name and topic.</p>
+
+          <div class="form-field">
+            <label for="resource-title"
+              >Title <span aria-hidden="true">*</span></label
+            >
+            <input
+              id="resource-title"
+              name="title"
+              type="text"
+              maxlength="150"
+              required
+              aria-describedby="title-hint"
+            />
+            <p id="title-hint" class="field-hint">
+              The name patients will see in the library. Up to 150 characters.
+            </p>
+          </div>
+
+          <div class="form-grid">
+            <%# Category options have not been defined yet. %>
+            <div class="form-field">
+              <label for="resource-category"
+                >Category <span aria-hidden="true">*</span></label
+              >
+              <input
+                id="resource-category"
+                name="category"
+                type="text"
+                maxlength="80"
+                required
+                aria-describedby="category-hint"
+              />
+              <p id="category-hint" class="field-hint">
+                A topic for grouping related resources. Up to 80 characters.
+              </p>
+            </div>
+            <div class="form-field">
+              <label for="resource-status"
+                >Publication status <span aria-hidden="true">*</span></label
+              >
+              <select
+                id="resource-status"
+                name="status"
+                required
+                aria-describedby="status-hint"
+              >
+                <option value="" disabled selected>Choose a status</option>
+                <option value="draft">Draft</option>
+                <option value="published">Published</option>
+              </select>
+              <p id="status-hint" class="field-hint">
+                Draft is for work in progress; Published is for the patient
+                library.
+              </p>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="form-section">
+          <legend>Resource content</legend>
+          <p class="section-intro">
+            Add a short introduction and the full text of the resource.
+          </p>
+
+          <div class="form-field">
+            <label for="resource-summary"
+              >Short summary <span aria-hidden="true">*</span></label
+            >
+            <textarea
+              id="resource-summary"
+              name="summary"
+              rows="3"
+              maxlength="500"
+              required
+              aria-describedby="summary-hint"
+            ></textarea>
+            <p id="summary-hint" class="field-hint">
+              A brief description for the library listing. Up to 500 characters.
+            </p>
+          </div>
+          <div class="form-field">
+            <label for="resource-content"
+              >Full content <span aria-hidden="true">*</span></label
+            >
+            <textarea
+              id="resource-content"
+              name="content"
+              rows="10"
+              maxlength="10000"
+              required
+              aria-describedby="content-hint"
+            ></textarea>
+            <p id="content-hint" class="field-hint">
+              The complete resource text. Up to 10,000 characters.
+            </p>
+          </div>
+        </fieldset>
+
+        <div class="form-actions">
+          <button
+            id="save-resource"
+            class="primary-link"
+            type="submit"
+            disabled
+          >
+            Save resource
+          </button>
+          <a class="secondary-link" href="/admin/resources">Cancel</a>
+        </div>
+        <p id="save-note" class="save-note">
+          Nothing entered here is saved. The last-updated date will be recorded
+          automatically when saving is available.
+        </p>
+      </form>
+    </main>
+
+    <footer class="site-footer page-width">
+      <p>Mobility EHR</p>
+      <p>Educational prototype &middot; Interface design</p>
+    </footer>
+  </body>
+</html>
