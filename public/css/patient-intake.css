@@ -1,0 +1,201 @@
+.patient-intake .page-width {
+  width: min(1000px, calc(100% - 48px));
+}
+.patient-intake .header-content {
+  flex-wrap: wrap;
+  gap: 12px 24px;
+}
+.patient-intake .preview-badge {
+  padding: 4px 12px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+.patient-intake .page-heading {
+  padding-block: 36px 24px;
+}
+.patient-intake .eyebrow,
+.patient-intake .section-number {
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 750;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.patient-intake h1 {
+  margin-top: 10px;
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  line-height: 1.15;
+}
+.patient-intake .intro {
+  max-width: 65ch;
+  margin-top: 16px;
+}
+.patient-intake .preview-notice {
+  padding: 16px 20px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+}
+.patient-intake .preview-notice p {
+  margin-top: 4px;
+}
+.patient-intake .section-nav {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-block: 24px;
+}
+.patient-intake .section-nav a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 56px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: white;
+  font-size: 0.85rem;
+  font-weight: 650;
+  text-decoration: none;
+}
+.patient-intake .section-nav a:hover {
+  border-color: var(--accent);
+}
+.patient-intake .section-nav span {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+.patient-intake .intake-section {
+  padding: 32px;
+  margin-top: 24px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: white;
+  scroll-margin-top: 24px;
+}
+.patient-intake h2 {
+  margin-block: 4px 16px;
+  font-size: 1.5rem;
+  line-height: 1.3;
+}
+.patient-intake h3 {
+  font-size: 1.1rem;
+}
+.patient-intake .section-intro,
+.patient-intake .field-hint {
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+.patient-intake .form-section,
+.patient-intake .signature-fields {
+  min-inline-size: 0;
+  margin: 28px 0 0;
+  padding: 0;
+  border: 0;
+}
+.patient-intake legend {
+  max-width: 100%;
+  margin-bottom: 6px;
+  padding: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+.patient-intake .form-grid {
+  margin-top: 16px;
+}
+.patient-intake .full-width {
+  grid-column: 1 / -1;
+}
+.patient-intake .form-field label {
+  font-size: 0.9rem;
+}
+.patient-intake .insurance-note {
+  margin-top: 20px;
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+.patient-intake .choice-field {
+  margin-top: 24px;
+}
+.patient-intake .choice-field label {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  min-height: 44px;
+  cursor: pointer;
+}
+.patient-intake .choice-field input {
+  flex: 0 0 20px;
+  width: 20px;
+  height: 20px;
+  margin: 3px 0 0;
+  accent-color: var(--accent);
+}
+.patient-intake .policy-copy > * + * {
+  margin-top: 20px;
+}
+.patient-intake .policy-copy {
+  margin-block: 20px 24px;
+}
+.patient-intake .policy-list {
+  padding-left: 24px;
+}
+.patient-intake .policy-list li {
+  padding-left: 8px;
+}
+.patient-intake .policy-list li + li {
+  margin-top: 24px;
+}
+.patient-intake .initials-field {
+  max-width: 160px;
+  margin-top: 12px;
+}
+.patient-intake .form-actions {
+  gap: 16px 24px;
+  padding: 28px 0;
+}
+.patient-intake .form-actions p {
+  flex-basis: 100%;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.patient-intake .primary-button {
+  min-height: 48px;
+  padding: 12px 20px;
+  border: 0;
+  border-radius: 8px;
+  font: inherit;
+  font-weight: 650;
+}
+.patient-intake .primary-button:disabled {
+  background: #e0e7e1;
+  color: var(--muted);
+  cursor: not-allowed;
+}
+.patient-intake .site-footer {
+  padding-block: 24px;
+}
+@media (max-width: 800px) {
+  .patient-intake .section-nav {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 560px) {
+  .patient-intake .page-width {
+    width: calc(100% - 32px);
+  }
+
+  .patient-intake .intake-section {
+    padding: 20px;
+  }
+
+  .patient-intake .form-grid,
+  .patient-intake .section-nav {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .patient-intake .primary-button {
+    width: 100%;
+  }
+}

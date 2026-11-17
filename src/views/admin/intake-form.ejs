@@ -11,234 +11,136 @@
   <body class="admin-dashboard intake-page">
     <a class="skip-link" href="#main-content">Skip to main content</a>
 
-    <header class="site-header">
-      <div class="page-width header-content">
-        <a class="brand" href="/" aria-label="Mobility EHR home">
-          <span class="brand-mark" aria-hidden="true">M</span>
-          <span>Mobility <span class="brand-label">EHR</span></span>
-        </a>
-        <nav aria-label="Main navigation">
-          <a href="/admin">Dashboard</a>
-          <a href="/admin/intake" aria-current="page">New intake</a>
-          <a href="/admin/users">User accounts</a>
-          <a href="/admin/resources">Resources</a>
-          <a href="/admin#intake-requests">Intake requests</a>
-          <a href="/admin#clinic-management">Clinic management</a>
-        </nav>
-      </div>
-    </header>
+    <%- include('../partials/header', {page: 'intake'}) %>
 
     <main id="main-content" class="page-width">
       <div class="page-heading">
         <div>
           <p class="eyebrow">Clinic administration</p>
-          <h1>New Intake Request</h1>
+          <h1>Send Patient Paperwork</h1>
           <p class="intro">
-            Enter the basic details from the patient's intake form before their
-            first visit.
+            Prepare a paperwork invitation for a patient with an existing account.
+            The patient will sign in before completing their intake.
           </p>
         </div>
         <a class="secondary-link" href="/admin">Back to dashboard</a>
       </div>
 
       <aside class="preview-notice" aria-label="Prototype notice">
-        <strong>Layout preview</strong>
-        <span
-          >Review the fields and layout. Saving and therapist selection will be
-          added later.</span
-        >
+        <strong>Parked idea</strong>
+        <span>
+          Email invitations are outside the current project scope. Patients will
+          open their intake after signing in. This draft does not send or save anything.
+        </span>
       </aside>
 
+      <p class="panel-note">
+        <a href="/intake/preview">Preview patient intake form</a>
+        to review the packet the patient will complete.
+      </p>
+
       <div class="intake-layout">
-        <%# TODO: Add a protected POST handler
-        and server-side validation before enabling intake submission. %>
+        <%# The server must resolve the recipient from the selected patient before sending. %>
         <form
           id="intake-form"
           class="intake-form"
           action="/admin/intake"
           method="post"
           autocomplete="off"
+          aria-describedby="send-note"
         >
           <p class="required-note">
             Fields marked <span aria-hidden="true">*</span> are required.
           </p>
 
           <fieldset class="form-section">
-            <legend>Patient details</legend>
+            <legend>Select a patient</legend>
             <p class="section-intro">
-              Basic information to help identify the patient.
-            </p>
-            <div class="form-grid">
-              <div class="form-field">
-                <label for="first-name"
-                  >First name <span aria-hidden="true">*</span></label
-                >
-                <input
-                  id="first-name"
-                  name="firstName"
-                  type="text"
-                  required
-                  maxlength="80"
-                  placeholder="First name"
-                />
-              </div>
-              <div class="form-field">
-                <label for="last-name"
-                  >Last name <span aria-hidden="true">*</span></label
-                >
-                <input
-                  id="last-name"
-                  name="lastName"
-                  type="text"
-                  required
-                  maxlength="80"
-                  placeholder="Last name"
-                />
-              </div>
-              <div class="form-field">
-                <label for="date-of-birth"
-                  >Date of birth <span aria-hidden="true">*</span></label
-                >
-                <input
-                  id="date-of-birth"
-                  name="dateOfBirth"
-                  type="date"
-                  required
-                  aria-describedby="birth-hint"
-                />
-                <p id="birth-hint" class="field-hint">
-                  Use the date provided on the intake form.
-                </p>
-              </div>
-            </div>
-          </fieldset>
-
-          <fieldset class="form-section">
-            <legend>Contact information</legend>
-            <p class="section-intro">
-              Enter the contact details provided with the request.
-            </p>
-            <div class="form-grid">
-              <div class="form-field">
-                <label for="email"
-                  >Email <span class="optional-label">(optional)</span></label
-                >
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  maxlength="254"
-                  placeholder="Email address"
-                  aria-describedby="email-hint"
-                />
-                <p id="email-hint" class="field-hint">
-                  Contact information only; this does not create a portal login.
-                </p>
-              </div>
-              <div class="form-field">
-                <label for="phone"
-                  >Phone <span class="optional-label">(optional)</span></label
-                >
-                <input
-                  id="phone"
-                  name="phone"
-                  type="tel"
-                  maxlength="40"
-                  placeholder="Phone number"
-                />
-              </div>
-            </div>
-          </fieldset>
-
-          <fieldset class="form-section">
-            <legend>Intake information</legend>
-            <p class="section-intro">
-              Keep this brief. The therapist will document the clinical
-              evaluation separately.
+              Send paperwork to a patient with an existing account.
             </p>
             <div class="form-field">
-              <label for="reason-for-visit"
-                >Reason for visit <span aria-hidden="true">*</span></label
-              >
-              <textarea
-                id="reason-for-visit"
-                name="reasonForVisit"
-                rows="4"
-                required
-                maxlength="1000"
-                aria-describedby="reason-hint"
-                placeholder="Briefly describe the concern stated on the intake form."
-              ></textarea>
-              <p id="reason-hint" class="field-hint">Up to 1,000 characters.</p>
-            </div>
-            <div class="form-field">
-              <label for="therapist"
-                >Assigned therapist
-                <span class="optional-label">(optional)</span></label
-              >
+              <label for="patient-account">
+                Patient <span aria-hidden="true">*</span>
+              </label>
               <select
-                id="therapist"
-                name="therapistId"
-                aria-describedby="therapist-hint"
+                id="patient-account"
+                name="patientId"
+                required
                 disabled
+                aria-describedby="patient-hint"
               >
-                <option value="">Choose therapist</option>
+                <option value="">Choose a patient</option>
               </select>
-              <p id="therapist-hint" class="field-hint">
-                Therapist choices will be available when staff accounts are
-                connected.
+              <p id="patient-hint" class="field-hint">
+                Patient accounts will appear here when records are connected.
+                Need a new account? <a href="/admin/users/new">Add account</a>.
               </p>
             </div>
           </fieldset>
 
+          <fieldset class="form-section">
+            <legend>Contact details</legend>
+            <p class="section-intro">
+              Check the recorded email before sending. Phone is shown when available.
+            </p>
+            <dl class="contact-details">
+              <div>
+                <dt>Email</dt>
+                <dd>No patient selected</dd>
+              </div>
+              <div>
+                <dt>Phone</dt>
+                <dd>No patient selected</dd>
+              </div>
+            </dl>
+          </fieldset>
+
           <div class="form-actions">
             <button
-              id="save-intake"
+              id="send-intake"
               class="primary-link"
               type="submit"
               disabled
             >
-              Save intake
+              Send paperwork invitation
             </button>
             <a class="secondary-link" href="/admin">Cancel</a>
           </div>
+          <p id="send-note" class="field-hint">
+            Nothing is sent or saved in this preview.
+          </p>
         </form>
 
         <aside class="workflow-panel" aria-labelledby="workflow-heading">
-          <p class="eyebrow">From request to care</p>
-          <h2 id="workflow-heading">Planned intake workflow</h2>
+          <p class="eyebrow">Future invitation idea</p>
+          <h2 id="workflow-heading">Patient paperwork</h2>
           <ol class="workflow-list">
             <li>
-              <strong>Intake Submitted</strong
-              ><span>A basic request is recorded.</span>
+              <strong>Select the patient</strong>
+              <span>Choose an existing patient account and check the recorded email.</span>
             </li>
             <li>
-              <strong>Under Review</strong
-              ><span>A therapist is assigned to review the request.</span>
+              <strong>Send the invitation</strong>
+              <span>The patient receives a link to sign in and complete their paperwork.</span>
             </li>
             <li>
-              <strong>Active Treatment</strong
-              ><span
-                >The therapist documents the evaluation and begins active
-                treatment.</span
-              >
+              <strong>Sign in</strong>
+              <span>The patient uses their existing email and password.</span>
             </li>
             <li>
-              <strong>Closed</strong
-              ><span>Care ends, or a request is closed with a reason.</span>
+              <strong>Complete the paperwork</strong>
+              <span>The submitted packet is linked to the patient’s profile for admin review.</span>
             </li>
           </ol>
           <p class="workflow-note">
-            If a patient misses the first visit, the request can stay Under
-            Review for follow-up.
+            Paperwork invitations do not create accounts or set passwords.
+            The invitation will open the sign-in page; after login, the patient
+            can access only their own paperwork. Email delivery is parked for future consideration.
           </p>
         </aside>
       </div>
     </main>
 
-    <footer class="site-footer page-width">
-      <p>Mobility EHR</p>
-      <p>Educational prototype &middot; Interface design</p>
-    </footer>
+    <%- include('../partials/footer', {page: 'intake'}) %>
   </body>
 </html>

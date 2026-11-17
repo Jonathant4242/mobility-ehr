@@ -1,5 +1,25 @@
-<%#
-    TODO: Extract shared branding and navigation
-    here once the admin layouts are settled. Add role-specific links after
-    authentication; access checks must still run on the server.
-%>
+<header class="site-header">
+  <div class="page-width header-content">
+    <a class="brand" href="/" aria-label="Mobility EHR home">
+      <span class="brand-mark" aria-hidden="true">M</span>
+      <% if (page === 'patient') { %>
+        <span>Mobility EHR</span>
+      <% } else { %>
+        <span>Mobility <span class="brand-label">EHR</span></span>
+      <% } %>
+    </a>
+    <% if (page === 'login') { %>
+      <nav aria-label="Main navigation">
+        <a href="/">Home</a>
+      </nav>
+    <% } else if (page === 'patient') { %>
+      <span class="preview-badge">Patient form preview</span>
+    <% } else if (page === 'patient-dashboard' || page === 'patient-journal') { %>
+      <%- include('patient-navigation', {page}) %>
+    <% } else if (page === 'pt-dashboard' || page === 'pt-care') { %>
+      <%- include('pt-navigation', {page}) %>
+    <% } else { %>
+      <%- include('admin-navigation', {page}) %>
+    <% } %>
+  </div>
+</header>

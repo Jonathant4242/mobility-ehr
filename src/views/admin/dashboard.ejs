@@ -10,21 +10,7 @@
   <body class="admin-dashboard">
     <a class="skip-link" href="#main-content">Skip to main content</a>
 
-    <header class="site-header">
-      <div class="page-width header-content">
-        <a class="brand" href="/" aria-label="Mobility EHR home">
-          <span class="brand-mark" aria-hidden="true">M</span>
-          <span>Mobility <span class="brand-label">EHR</span></span>
-        </a>
-        <nav aria-label="Main navigation">
-          <a href="/admin" aria-current="page">Dashboard</a>
-          <a href="/admin/users">User accounts</a>
-          <a href="/admin/resources">Resources</a>
-          <a href="#intake-requests">Intake requests</a>
-          <a href="#clinic-management">Clinic management</a>
-        </nav>
-      </div>
-    </header>
+    <%- include('../partials/header', {page: 'dashboard'}) %>
 
     <main id="main-content" class="page-width">
       <div class="page-heading">
@@ -32,12 +18,10 @@
           <p class="eyebrow">Clinic administration</p>
           <h1>Admin Dashboard</h1>
           <p class="intro">
-            An overview of care episodes and the requests that need attention.
+            Manage intake requests, user roles, and patient education resources.
           </p>
         </div>
-        <a class="primary-link" href="/admin/intake"
-          >New intake <span aria-hidden="true">+</span></a
-        >
+        <a class="primary-link" href="/admin/intake/review">Preview intake review</a>
       </div>
 
       <aside class="preview-notice" aria-label="Prototype notice">
@@ -48,42 +32,6 @@
         >
       </aside>
 
-      <section class="dashboard-section" aria-labelledby="overview-heading">
-        <div class="section-heading">
-          <h2 id="overview-heading">Care Overview</h2>
-          <p>
-            These areas will show care-episode totals once records are
-            connected.
-          </p>
-        </div>
-        <div class="summary-grid">
-          <%# Dashes indicate that records are not connected, rather than a zero
-          total. %>
-          <article class="summary-card stage-intake">
-            <h3>Intake Submitted</h3>
-            <p class="summary-count" aria-label="Not connected">&mdash;</p>
-            <p class="summary-description">Requests waiting for review.</p>
-          </article>
-          <article class="summary-card stage-review">
-            <h3>Under Review</h3>
-            <p class="summary-count" aria-label="Not connected">&mdash;</p>
-            <p class="summary-description">Requests awaiting evaluation.</p>
-          </article>
-          <article class="summary-card stage-active">
-            <h3>Active Treatment</h3>
-            <p class="summary-count" aria-label="Not connected">&mdash;</p>
-            <p class="summary-description">Episodes with ongoing care.</p>
-          </article>
-          <article class="summary-card stage-closed">
-            <h3>Closed</h3>
-            <p class="summary-count" aria-label="Not connected">&mdash;</p>
-            <p class="summary-description">
-              Episodes or requests that have ended.
-            </p>
-          </article>
-        </div>
-      </section>
-
       <section
         id="intake-requests"
         class="dashboard-section panel"
@@ -92,8 +40,8 @@
         <div class="panel-heading">
           <h2 id="intake-heading">Intake Requests</h2>
           <p>
-            Submitted requests and episodes under review, with current therapist
-            assignments.
+            Review patient paperwork, respond with an administrative note, and
+            assign the initial evaluation.
           </p>
         </div>
 
@@ -110,9 +58,9 @@
             <thead>
               <tr>
                 <th scope="col">Patient</th>
-                <th scope="col">Date recorded</th>
-                <th scope="col">Assigned therapist</th>
-                <th scope="col">Status</th>
+                <th scope="col">Paperwork received</th>
+                <th scope="col">Evaluating therapist</th>
+                <th scope="col">Care status</th>
               </tr>
             </thead>
             <tbody>
@@ -130,52 +78,23 @@
         </div>
 
         <p class="panel-note">
-          Open New intake to review the fields and form layout.
+          Patients will submit their paperwork after signing in.
+          <a href="/intake/preview">Preview the blank patient intake form</a>.
         </p>
       </section>
 
-      <section
-        id="clinic-management"
-        class="dashboard-section"
-        aria-labelledby="management-heading"
-      >
-        <div class="section-heading">
-          <h2 id="management-heading">Clinic Management</h2>
-          <p>
-            Review available previews and the management areas planned next.
-          </p>
-        </div>
-        <div class="management-grid">
-          <article class="management-card">
-            <span class="planned-label">UI preview</span>
-            <h3><a href="/admin/users">User accounts and roles</a></h3>
-            <p>
-              Review the account directory layout and planned administrator,
-              therapist, and patient permissions.
-            </p>
-          </article>
-          <article class="management-card">
-            <span class="planned-label">UI preview</span>
-            <h3><a href="/admin/resources">Patient education resources</a></h3>
-            <p>
-              Review the library layout, planned filters, and resource fields.
-            </p>
-          </article>
-          <article class="management-card">
-            <span class="planned-label">Planned</span>
-            <h3>Flagged patient submissions</h3>
-            <p>
-              Review patient submissions that have been flagged for staff
-              attention.
-            </p>
-          </article>
-        </div>
-      </section>
+      <div class="dashboard-section management-grid">
+        <section class="management-card" aria-labelledby="users-heading">
+          <h2 id="users-heading"><a href="/admin/users">Users</a></h2>
+          <p>View accounts and manage roles.</p>
+        </section>
+        <section class="management-card" aria-labelledby="resources-heading">
+          <h2 id="resources-heading"><a href="/admin/resources">Education resources</a></h2>
+          <p>Add, edit, and delete content in the patient education library.</p>
+        </section>
+      </div>
     </main>
 
-    <footer class="site-footer page-width">
-      <p>Mobility EHR</p>
-      <p>Educational prototype &middot; Interface design</p>
-    </footer>
+    <%- include('../partials/footer', {page: 'dashboard'}) %>
   </body>
 </html>

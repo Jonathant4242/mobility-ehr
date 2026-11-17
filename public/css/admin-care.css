@@ -1,0 +1,49 @@
+.care-page .record-summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  padding: 0 24px 24px;
+  margin: 0;
+}
+
+.care-page .record-summary .full-width {
+  grid-column: 1 / -1;
+}
+
+.care-page dt {
+  font-weight: 650;
+}
+.care-page dd {
+  margin: 4px 0 0;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+
+.care-page .packet-actions,
+.care-page .review-fields {
+  padding: 0 24px 24px;
+}
+.care-page .form-actions {
+  gap: 12px 20px;
+}
+.care-page .review-fields .form-actions {
+  margin-top: 24px;
+}
+.care-page .form-field select:disabled {
+  background: #f1f4f1;
+  border-color: var(--line);
+  color: var(--muted);
+  opacity: 1;
+  cursor: not-allowed;
+}
+
+@media (max-width: 520px) {
+  .care-page .record-summary {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .care-page .record-summary,
+  .care-page .packet-actions,
+  .care-page .review-fields {
+    padding-inline: 20px;
+  }
+}

@@ -1,0 +1,35 @@
+<fieldset class="signature-fields">
+  <legend>Signature</legend>
+  <p class="field-hint" id="<%= prefix %>-signature-hint">
+    Type the signer's full name for this preview. A parent or guardian may sign
+    for a minor. This field does not save a signature.
+  </p>
+  <div class="form-grid">
+    <div class="form-field full-width">
+      <label for="<%= prefix %>-signature">Typed signature</label>
+      <input
+        id="<%= prefix %>-signature"
+        name="<%= prefix %>Signature"
+        type="text"
+        maxlength="160"
+        aria-describedby="<%= prefix %>-signature-hint"
+      />
+    </div>
+    <div class="form-field">
+      <label for="<%= prefix %>-signer-role">Signing as</label>
+      <select id="<%= prefix %>-signer-role" name="<%= prefix %>SignerRole">
+        <option value="">Choose a role</option>
+        <option value="patient">Patient</option>
+        <option value="parent-guardian">Parent or guardian</option>
+      </select>
+    </div>
+    <div class="form-field">
+      <label for="<%= prefix %>-signed-date">Date</label>
+      <input
+        id="<%= prefix %>-signed-date"
+        name="<%= prefix %>SignedDate"
+        type="date"
+      />
+    </div>
+  </div>
+</fieldset>

@@ -11,29 +11,19 @@
   <body class="admin-dashboard resource-form-page">
     <a class="skip-link" href="#main-content">Skip to main content</a>
 
-    <header class="site-header">
-      <div class="page-width header-content">
-        <a class="brand" href="/" aria-label="Mobility EHR home">
-          <span class="brand-mark" aria-hidden="true">M</span>
-          <span>Mobility <span class="brand-label">EHR</span></span>
-        </a>
-        <nav aria-label="Main navigation">
-          <a href="/admin">Dashboard</a>
-          <a href="/admin/intake">New intake</a>
-          <a href="/admin/users">User accounts</a>
-          <a href="/admin/resources" aria-current="location">Resources</a>
-          <a href="/admin#clinic-management">Clinic management</a>
-        </nav>
-      </div>
-    </header>
+    <%- include('../partials/header', {page: 'resource-form'}) %>
 
     <main id="main-content" class="page-width">
       <div class="page-heading">
         <div>
           <p class="eyebrow">Clinic administration</p>
-          <h1>Add Education Resource</h1>
+          <h1><%= isEditing ? 'Edit Education Resource' : 'Add Education Resource' %></h1>
           <p class="intro">
-            Organize the information patients will find in the resource library.
+            <% if (isEditing) { %>
+              Update the resource details, content, and publication status.
+            <% } else { %>
+              Organize the information patients will find in the resource library.
+            <% } %>
           </p>
         </div>
         <a class="secondary-link" href="/admin/resources"
@@ -43,20 +33,22 @@
 
       <aside class="preview-notice" aria-label="Prototype notice">
         <strong>Layout preview</strong>
-        <span
-          >Review the blank fields and layout. Saving and publishing are not
-          available yet.</span
-        >
+        <span>
+          <% if (isEditing) { %>
+            No resource is selected. These blank fields preview the edit form;
+            existing resource details will load here when records are connected.
+          <% } else { %>
+            Review the blank fields and layout. Saving and publishing are not
+            available yet.
+          <% } %>
+        </span>
       </aside>
 
-      <%#
-            TODO: Add permissions, server-side
-            validation, and persistence before enabling resource submission.
-        %>
+      <%# Keep both form modes disabled until records and permission checks are connected. %>
       <form
         id="resource-form"
         class="resource-form"
-        action="/admin/resources"
+        action="<%= isEditing ? '/admin/resources/edit-preview' : '/admin/resources' %>"
         method="post"
         autocomplete="off"
         aria-describedby="save-note"
@@ -173,20 +165,27 @@
             type="submit"
             disabled
           >
-            Save resource
+            <%= isEditing ? 'Save changes' : 'Save resource' %>
           </button>
           <a class="secondary-link" href="/admin/resources">Cancel</a>
+          <% if (isEditing) { %>
+            <button class="primary-link" type="button" disabled
+              aria-describedby="save-note">Delete resource</button>
+          <% } %>
         </div>
         <p id="save-note" class="save-note">
-          Nothing entered here is saved. The last-updated date will be recorded
-          automatically when saving is available.
+          Nothing entered here is saved.
+          <% if (isEditing) { %>
+            Deleting will require a selected resource and confirmation when
+            records are connected.
+          <% } else { %>
+            The last-updated date will be recorded automatically when saving
+            is available.
+          <% } %>
         </p>
       </form>
     </main>
 
-    <footer class="site-footer page-width">
-      <p>Mobility EHR</p>
-      <p>Educational prototype &middot; Interface design</p>
-    </footer>
+    <%- include('../partials/footer', {page: 'resource-form'}) %>
   </body>
 </html>

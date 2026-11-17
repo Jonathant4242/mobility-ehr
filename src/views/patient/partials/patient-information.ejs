@@ -1,0 +1,286 @@
+<section
+  class="intake-section"
+  id="patient-information"
+  aria-labelledby="patient-information-heading"
+>
+  <p class="section-number">01</p>
+  <h2 id="patient-information-heading">Patient information</h2>
+  <p class="section-intro">
+    Enter your contact information, emergency contact, and goals for physical
+    therapy. Complete employer information only for workers' compensation.
+  </p>
+
+  <fieldset class="form-section">
+    <legend>Demographics and contact information</legend>
+    <div class="form-grid">
+      <div class="form-field">
+        <label for="patient-first-name">First name</label>
+        <input
+          id="patient-first-name"
+          name="firstName"
+          type="text"
+          maxlength="80"
+        />
+      </div>
+      <div class="form-field">
+        <label for="patient-middle-initial">Middle initial</label>
+        <input
+          id="patient-middle-initial"
+          name="middleInitial"
+          type="text"
+          maxlength="2"
+        />
+      </div>
+      <div class="form-field">
+        <label for="patient-last-name">Last name</label>
+        <input
+          id="patient-last-name"
+          name="lastName"
+          type="text"
+          maxlength="80"
+        />
+      </div>
+      <div class="form-field">
+        <label for="patient-birth-date">Date of birth</label>
+        <input id="patient-birth-date" name="dateOfBirth" type="date" />
+      </div>
+      <div class="form-field full-width">
+        <label for="patient-address">Street address</label>
+        <input
+          id="patient-address"
+          name="address"
+          type="text"
+          maxlength="200"
+        />
+      </div>
+      <div class="form-field">
+        <label for="patient-city">City</label>
+        <input id="patient-city" name="city" type="text" maxlength="100" />
+      </div>
+      <div class="form-field">
+        <label for="patient-state">State</label>
+        <input id="patient-state" name="state" type="text" maxlength="50" />
+      </div>
+      <div class="form-field">
+        <label for="patient-zip">ZIP code</label>
+        <input id="patient-zip" name="postalCode" type="text" maxlength="10" />
+      </div>
+      <div class="form-field">
+        <label for="patient-email">Email</label>
+        <input id="patient-email" name="email" type="email" maxlength="254" />
+      </div>
+      <div class="form-field">
+        <label for="patient-cell-phone">Cell phone</label>
+        <input
+          id="patient-cell-phone"
+          name="cellPhone"
+          type="tel"
+          maxlength="40"
+        />
+      </div>
+      <div class="form-field">
+        <label for="patient-other-phone">Home or work phone</label>
+        <input
+          id="patient-other-phone"
+          name="homeWorkPhone"
+          type="tel"
+          maxlength="40"
+        />
+      </div>
+      <div class="form-field">
+        <label for="patient-sex">Sex</label>
+        <select id="patient-sex" name="sex">
+          <option value="">Choose an option</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label for="patient-marital-status">Marital status</label>
+        <select id="patient-marital-status" name="maritalStatus">
+          <option value="">Choose an option</option>
+          <option value="single">Single</option>
+          <option value="married">Married</option>
+          <option value="divorced">Divorced</option>
+          <option value="separated">Separated</option>
+          <option value="widowed">Widowed</option>
+        </select>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset class="form-section">
+    <legend>Employer information of the insured party</legend>
+    <p class="field-hint">For workers' compensation insurance only.</p>
+    <div class="form-grid">
+      <div class="form-field full-width">
+        <label for="employer-name">Employer name</label>
+        <input
+          id="employer-name"
+          name="employerName"
+          type="text"
+          maxlength="160"
+        />
+      </div>
+      <div class="form-field full-width">
+        <label for="employer-address">Employer street address</label>
+        <input
+          id="employer-address"
+          name="employerAddress"
+          type="text"
+          maxlength="200"
+        />
+      </div>
+      <div class="form-field">
+        <label for="employer-city">City</label>
+        <input
+          id="employer-city"
+          name="employerCity"
+          type="text"
+          maxlength="100"
+        />
+      </div>
+      <div class="form-field">
+        <label for="employer-state">State</label>
+        <input
+          id="employer-state"
+          name="employerState"
+          type="text"
+          maxlength="50"
+        />
+      </div>
+      <div class="form-field">
+        <label for="employer-zip">ZIP code</label>
+        <input
+          id="employer-zip"
+          name="employerPostalCode"
+          type="text"
+          maxlength="10"
+        />
+      </div>
+      <div class="form-field">
+        <label for="employer-phone">Employer phone</label>
+        <input
+          id="employer-phone"
+          name="employerPhone"
+          type="tel"
+          maxlength="40"
+        />
+      </div>
+      <div class="form-field full-width">
+        <label for="employer-contact">Employer contact</label>
+        <input
+          id="employer-contact"
+          name="employerContact"
+          type="text"
+          maxlength="160"
+        />
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset class="form-section">
+    <legend>Emergency contact</legend>
+    <div class="form-grid">
+      <div class="form-field">
+        <label for="emergency-first-name">First name</label>
+        <input
+          id="emergency-first-name"
+          name="emergencyFirstName"
+          type="text"
+          maxlength="80"
+        />
+      </div>
+      <div class="form-field">
+        <label for="emergency-last-name">Last name</label>
+        <input
+          id="emergency-last-name"
+          name="emergencyLastName"
+          type="text"
+          maxlength="80"
+        />
+      </div>
+      <div class="form-field">
+        <label for="emergency-relationship">Relationship</label>
+        <select id="emergency-relationship" name="emergencyRelationship">
+          <option value="">Choose a relationship</option>
+          <option value="spouse">Spouse</option>
+          <option value="friend">Friend</option>
+          <option value="parent">Parent</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label for="emergency-other-relationship">Other relationship, if applicable</label>
+        <input
+          id="emergency-other-relationship"
+          name="emergencyOtherRelationship"
+          type="text"
+          maxlength="80"
+        />
+      </div>
+      <div class="form-field">
+        <label for="emergency-day-phone">Day phone</label>
+        <input
+          id="emergency-day-phone"
+          name="emergencyDayPhone"
+          type="tel"
+          maxlength="40"
+        />
+      </div>
+      <div class="form-field">
+        <label for="emergency-evening-phone">Evening phone</label>
+        <input
+          id="emergency-evening-phone"
+          name="emergencyEveningPhone"
+          type="tel"
+          maxlength="40"
+        />
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset class="form-section">
+    <legend>Injury information and goals</legend>
+    <div class="form-grid">
+      <div class="form-field">
+        <label for="injury-date">Date of injury, if applicable</label>
+        <input id="injury-date" name="injuryDate" type="date" />
+      </div>
+      <div class="form-field full-width">
+        <label for="reason-for-visit">Reason for visit or nature of injury</label>
+        <textarea
+          id="reason-for-visit"
+          name="reasonForVisit"
+          rows="3"
+          maxlength="1000"
+        ></textarea>
+      </div>
+      <div class="form-field full-width">
+        <label for="therapy-goals">Your goals for physical therapy</label>
+        <textarea
+          id="therapy-goals"
+          name="therapyGoals"
+          rows="4"
+          maxlength="2000"
+        ></textarea>
+      </div>
+    </div>
+    <p class="insurance-note">
+      Please notify the clinic if you have secondary or supplemental insurance.
+    </p>
+  </fieldset>
+
+  <div class="choice-field">
+    <label for="information-certified">
+      <input
+        id="information-certified"
+        name="informationCertified"
+        type="checkbox"
+        value="true"
+      />
+      <span>I certify that the information provided above is correct.</span>
+    </label>
+  </div>
+  <%- include('signature-fields', {prefix: 'information'}) %>
+</section>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="/css/admin-dashboard.css" />
+  </head>
+  <body class="pt-dashboard">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <%- include('../partials/header', {page: 'pt-dashboard'}) %>
+
+    <main id="main-content" class="page-width">
+      <div class="page-heading">
+        <div>
+          <p class="eyebrow">Physical therapy</p>
+          <h1>PT Dashboard</h1>
+          <p class="intro">Review the clinic's shared patient list.</p>
+        </div>
+        <a class="primary-link" href="/pt/patients/preview">Preview patient care</a>
+      </div>
+
+      <aside class="preview-notice" aria-label="Prototype notice">
+        <strong>Layout preview</strong>
+        <span>No patient records are connected. Patient care actions will be added later.</span>
+      </aside>
+
+      <section class="dashboard-section panel" aria-labelledby="patients-heading">
+        <div class="panel-heading">
+          <h2 id="patients-heading">Patients</h2>
+          <p>
+            The evaluating therapist handles the initial evaluation. After that,
+            any clinic therapist can document follow-up care.
+          </p>
+        </div>
+
+        <div
+          class="table-container"
+          role="region"
+          aria-label="Shared patient list"
+          tabindex="0"
+        >
+          <table>
+            <caption class="visually-hidden">Shared patient list preview</caption>
+            <thead>
+              <tr>
+                <th scope="col">Patient</th>
+                <th scope="col">Evaluating therapist</th>
+                <th scope="col">Care status</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <%# Keep the list empty until patient records are connected. %>
+              <tr>
+                <td colspan="4" class="empty-state">
+                  <h3>No patient records connected</h3>
+                  <p>
+                    Patient details and Open patient links will appear here
+                    when records are connected.
+                  </p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <%- include('../partials/footer', {page: 'pt-dashboard'}) %>
+  </body>
+</html>

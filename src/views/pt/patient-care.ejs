@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="/css/admin-dashboard.css" />
+    <link rel="stylesheet" href="/css/admin-care.css" />
+  </head>
+  <body class="pt-dashboard care-page">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <%- include('../partials/header', {page: 'pt-care'}) %>
+
+    <main id="main-content" class="page-width">
+      <div class="page-heading">
+        <div>
+          <p class="eyebrow">Physical therapy</p>
+          <h1>Patient Care</h1>
+          <p class="intro">Review intake, document care, and update the care episode.</p>
+        </div>
+        <a class="secondary-link" href="/pt">Back to patients</a>
+      </div>
+
+      <aside class="preview-notice" aria-label="Prototype notice">
+        <strong>Layout preview</strong>
+        <span>No patient is selected. Nothing entered here is saved.</span>
+      </aside>
+
+      <section class="dashboard-section panel" aria-labelledby="intake-heading">
+        <div class="panel-heading">
+          <h2 id="intake-heading">Intake information</h2>
+          <p>Review the patient's submitted information before documenting care.</p>
+        </div>
+        <dl class="record-summary">
+          <div><dt>Patient name</dt><dd>Not connected</dd></div>
+          <div><dt>Date of birth</dt><dd>Not connected</dd></div>
+          <div><dt>Evaluating therapist</dt><dd>Not connected</dd></div>
+          <div class="full-width">
+            <dt>Reason for visit</dt>
+            <dd>No submitted intake connected.</dd>
+          </div>
+        </dl>
+        <div class="packet-actions">
+          <div class="form-actions">
+            <button class="primary-link" type="button" disabled aria-describedby="packet-note">
+              View submitted packet
+            </button>
+            <a href="/intake/preview">Preview the blank intake form</a>
+          </div>
+          <p id="packet-note" class="field-hint">
+            The submitted packet will be available when records are connected.
+          </p>
+        </div>
+      </section>
+
+      <section class="dashboard-section panel" aria-labelledby="notes-heading">
+        <div class="panel-heading">
+          <h2 id="notes-heading">Care notes</h2>
+          <p>No care notes connected. Saved notes will show the author and recorded date.</p>
+        </div>
+        <%# Preview forms have no submission handlers; keep save buttons disabled. %>
+        <form
+          id="care-note-form"
+          action="/pt/patients/preview/notes"
+          method="post"
+          autocomplete="off"
+          aria-describedby="note-save-hint"
+        >
+          <fieldset class="form-section review-fields">
+            <legend class="visually-hidden">New care note</legend>
+            <div class="form-field">
+              <label for="care-note">New care note (required)</label>
+              <textarea
+                id="care-note"
+                name="note"
+                rows="6"
+                maxlength="5000"
+                required
+                aria-describedby="note-hint"
+              ></textarea>
+              <p id="note-hint" class="field-hint">
+                Document the initial evaluation or a follow-up visit. Up to 5,000 characters.
+              </p>
+            </div>
+            <div class="form-actions">
+              <button class="primary-link" type="submit" disabled>Save care note</button>
+            </div>
+            <p id="note-save-hint" class="field-hint">
+              Saving is unavailable in this preview. Clinical notes remain separate from patient journal entries.
+            </p>
+          </fieldset>
+        </form>
+      </section>
+
+      <section class="dashboard-section panel" aria-labelledby="status-heading">
+        <div class="panel-heading">
+          <h2 id="status-heading">Care status and history</h2>
+          <p>Current care status: <strong>Not connected</strong></p>
+        </div>
+        <form
+          id="care-status-form"
+          action="/pt/patients/preview/status"
+          method="post"
+          autocomplete="off"
+          aria-describedby="status-save-hint"
+        >
+          <fieldset class="form-section review-fields">
+            <legend class="visually-hidden">Update care status</legend>
+            <div class="form-field">
+              <label for="care-status">New care status (required)</label>
+              <select id="care-status" name="status" required aria-describedby="status-hint">
+                <option value="" disabled selected>Choose a status</option>
+                <option value="active_treatment">Active Treatment</option>
+                <option value="closed">Closed</option>
+              </select>
+              <p id="status-hint" class="field-hint">
+                After review, begin Active Treatment or close the episode.
+                An active episode can move to Closed.
+              </p>
+            </div>
+            <div class="form-actions">
+              <button class="primary-link" type="submit" disabled>Update care status</button>
+            </div>
+            <p id="status-save-hint" class="field-hint">
+              Choosing a status does not update the episode or history in this preview.
+            </p>
+          </fieldset>
+        </form>
+
+        <div class="panel-heading">
+          <h3 id="history-heading">Status history</h3>
+          <p>Each status change will identify who made it and when.</p>
+        </div>
+        <div class="table-container" role="region" aria-labelledby="history-heading" tabindex="0">
+          <table>
+            <caption class="visually-hidden">Care status history preview</caption>
+            <thead>
+              <tr>
+                <th scope="col">Previous status</th>
+                <th scope="col">New status</th>
+                <th scope="col">Changed by</th>
+                <th scope="col">Date and time</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td colspan="4" class="empty-state">
+                  <p>No status history connected.</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <%- include('../partials/footer', {page: 'pt-care'}) %>
+  </body>
+</html>

@@ -1,0 +1,194 @@
+<section
+  id="financial-policy"
+  class="intake-section"
+  aria-labelledby="financial-policy-heading"
+>
+  <p class="section-number">02</p>
+  <h2 id="financial-policy-heading">Financial policy</h2>
+  <div class="policy-copy">
+    <p>
+      We are happy that you chose us for your physical therapy treatment. Please
+      carefully read, initial, and sign this agreement. Let our office know if
+      you have any questions:
+    </p>
+    <ol class="policy-list">
+      <li>
+        <p>
+          Patients are responsible for knowing their own health insurance
+          coverage. This includes, but is not limited to: eligibility, maximums,
+          deductibles, co-payments, frequency limitations, and waiting periods.
+          As a courtesy, we can help you verify your physical therapy benefit
+          information. However, it is ultimately YOUR responsibility to know
+          what is covered under your health insurance.
+        </p>
+        <div class="form-field initials-field">
+          <label for="financial-initials-1">Initials for item 1</label>
+          <input
+            id="financial-initials-1"
+            name="financialInitials1"
+            type="text"
+            maxlength="10"
+            autocomplete="off"
+          />
+        </div>
+      </li>
+      <li>
+        <p>
+          I understand that all payments and/or co-payments for treatment
+          rendered by Mobility Physical Therapy Inc. are due in full at the
+          time of service.
+        </p>
+        <div class="form-field initials-field">
+          <label for="financial-initials-2">Initials for item 2</label>
+          <input
+            id="financial-initials-2"
+            name="financialInitials2"
+            type="text"
+            maxlength="10"
+            autocomplete="off"
+          />
+        </div>
+      </li>
+      <li>
+        <p>
+          You will need to pay your portion of the charges as you go. This
+          includes annual deductibles, co-payments, and charges your insurance
+          plan refuses to pay. Any balance on your account remaining after we
+          have received payment from your health insurance is expected to be
+          paid within 30 days.
+        </p>
+        <div class="form-field initials-field">
+          <label for="financial-initials-3">Initials for item 3</label>
+          <input
+            id="financial-initials-3"
+            name="financialInitials3"
+            type="text"
+            maxlength="10"
+            autocomplete="off"
+          />
+        </div>
+      </li>
+      <li>
+        <p>There will be a $25 charge for any cancelled or returned checks.</p>
+        <div class="form-field initials-field">
+          <label for="financial-initials-4">Initials for item 4</label>
+          <input
+            id="financial-initials-4"
+            name="financialInitials4"
+            type="text"
+            maxlength="10"
+            autocomplete="off"
+          />
+        </div>
+      </li>
+      <li>
+        <p>
+          Patients without insurance coverage will be expected to pay for
+          treatment on the date that services are rendered &ndash; no exceptions.
+        </p>
+        <div class="form-field initials-field">
+          <label for="financial-initials-5">Initials for item 5</label>
+          <input
+            id="financial-initials-5"
+            name="financialInitials5"
+            type="text"
+            maxlength="10"
+            autocomplete="off"
+          />
+        </div>
+      </li>
+      <li>
+        <p>
+          Account balances 60 days or older will be subject to a finance charge
+          of 2% per month. Account balances over 90 days old will be referred to
+          our collection agency unless prior arrangements have been made. All
+          collection expenses are the account holder&rsquo;s responsibility.
+        </p>
+        <div class="form-field initials-field">
+          <label for="financial-initials-6">Initials for item 6</label>
+          <input
+            id="financial-initials-6"
+            name="financialInitials6"
+            type="text"
+            maxlength="10"
+            autocomplete="off"
+          />
+        </div>
+      </li>
+      <li>
+        <p>
+          I understand that I am responsible for the reimbursement to Mobility
+          Physical Therapy Inc. of any appointments that result in a no show or
+          a cancellation with less than 24-hour notice. There will be a $70
+          charge for such missed appointments. Missed appointment fees are due
+          in a timely fashion within 30 days. We understand these things happen
+          from time to time, but if there are multiple occurrences where you do
+          not call us in advance to cancel your appointment, you will be asked
+          to find another provider. We do not like to discharge patients from
+          our practice, so please be respectful and let us know if you cannot
+          make it.
+        </p>
+        <div class="form-field initials-field">
+          <label for="financial-initials-7">Initials for item 7</label>
+          <input
+            id="financial-initials-7"
+            name="financialInitials7"
+            type="text"
+            maxlength="10"
+            autocomplete="off"
+          />
+        </div>
+      </li>
+      <li>
+        <p>
+          If you have any changes to your health care plan, it is YOUR
+          responsibility to notify us of such changes.
+        </p>
+        <div class="form-field initials-field">
+          <label for="financial-initials-8">Initials for item 8</label>
+          <input
+            id="financial-initials-8"
+            name="financialInitials8"
+            type="text"
+            maxlength="10"
+            autocomplete="off"
+          />
+        </div>
+      </li>
+      <li>
+        <p>
+          I hereby authorize payment directly to Mobility Physical Therapy Inc.
+          for all evaluations and treatment rendered by their employees or any
+          other related person/s.
+        </p>
+        <div class="form-field initials-field">
+          <label for="financial-initials-9">Initials for item 9</label>
+          <input
+            id="financial-initials-9"
+            name="financialInitials9"
+            type="text"
+            maxlength="10"
+            autocomplete="off"
+          />
+        </div>
+      </li>
+    </ol>
+    <p>
+      By signing below, you acknowledge that you have read this policy and agree
+      with the terms. Your signature below also assigns insurance plan payments
+      directly to the office. Any duplicate or copy of this agreement will be
+      treated as an original and valid for all circumstances within this
+      document.
+    </p>
+  </div>
+  <div class="form-field">
+    <label for="financial-patient-name">Patient name</label>
+    <input
+      id="financial-patient-name"
+      name="financialPatientName"
+      type="text"
+      maxlength="160"
+    />
+  </div>
+  <%- include('signature-fields', {prefix: 'financial'}) %>
+</section>
