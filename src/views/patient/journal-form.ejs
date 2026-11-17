@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="/css/admin-dashboard.css" />
+    <link rel="stylesheet" href="/css/admin-care.css" />
+  </head>
+  <body class="patient-dashboard care-page">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <%- include('../partials/header', {page: 'patient-journal'}) %>
+
+    <main id="main-content" class="page-width">
+      <div class="page-heading">
+        <div>
+          <p class="eyebrow">Patient portal</p>
+          <h1><%= isEditing ? 'Edit Journal Entry' : 'Add Journal Entry' %></h1>
+          <p class="intro">
+            <%= isEditing ? 'Update the date and progress note for your entry.' : 'Record a short update about your symptoms or progress.' %>
+          </p>
+        </div>
+        <a class="secondary-link" href="/patient#progress-journal">Back to my journal</a>
+      </div>
+
+      <aside class="preview-notice" aria-label="Prototype notice">
+        <strong>Layout preview</strong>
+        <span>
+          <% if (isEditing) { %>
+            No entry is selected. These blank fields preview the edit form.
+          <% } else { %>
+            Review the blank form. Entries are not created or saved yet.
+          <% } %>
+        </span>
+      </aside>
+
+      <%# Both modes share these fields; saving requires records and ownership checks. %>
+      <form
+        id="journal-form"
+        class="dashboard-section panel"
+        action="<%= isEditing ? '/patient/journal/edit-preview' : '/patient/journal' %>"
+        method="post"
+        autocomplete="off"
+        aria-describedby="save-note"
+      >
+        <div class="panel-heading">
+          <h2>Journal entry</h2>
+          <p>Both fields are required.</p>
+        </div>
+        <fieldset class="form-section review-fields">
+          <legend class="visually-hidden">Entry details</legend>
+          <div class="form-field">
+            <label for="journal-date">Entry date</label>
+            <input id="journal-date" name="entryDate" type="date" required />
+          </div>
+          <div class="form-field">
+            <label for="progress-note">Progress note</label>
+            <textarea
+              id="progress-note"
+              name="progressNote"
+              rows="5"
+              maxlength="1000"
+              required
+              aria-describedby="progress-note-hint"
+            ></textarea>
+            <p id="progress-note-hint" class="field-hint">
+              Briefly describe your symptoms or progress. Up to 1,000 characters.
+            </p>
+          </div>
+          <div class="form-actions">
+            <button class="primary-link" type="submit" disabled>
+              <%= isEditing ? 'Save changes' : 'Save entry' %>
+            </button>
+            <a class="secondary-link" href="/patient#progress-journal">Cancel</a>
+            <% if (isEditing) { %>
+              <button class="primary-link" type="button" disabled aria-describedby="save-note">
+                Delete entry
+              </button>
+            <% } %>
+          </div>
+          <p id="save-note" class="field-hint">
+            Nothing entered here is saved in this preview.
+            <% if (isEditing) { %>Deleting is also unavailable.<% } %>
+          </p>
+        </fieldset>
+      </form>
+    </main>
+
+    <%- include('../partials/footer', {page: 'patient-journal'}) %>
+  </body>
+</html>

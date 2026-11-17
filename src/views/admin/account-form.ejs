@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="/css/admin-dashboard.css" />
+    <link rel="stylesheet" href="/css/admin-account-form.css" />
+  </head>
+  <body class="admin-dashboard account-form-page">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <%- include('../partials/header', {page: 'account-form'}) %>
+
+    <main id="main-content" class="page-width">
+      <div class="page-heading">
+        <div>
+          <p class="eyebrow">Clinic administration</p>
+          <h1><%= isEditing ? 'Edit Account' : 'Add Account' %></h1>
+          <p class="intro">
+            <% if (isEditing) { %>
+              Update account details, the user role, and active or inactive status.
+            <% } else { %>
+              Enter the account details, choose a role, and set the initial password.
+            <% } %>
+          </p>
+        </div>
+        <a class="secondary-link" href="/admin/users">Back to user accounts</a>
+      </div>
+
+      <aside class="preview-notice" aria-label="Prototype notice">
+        <strong>Layout preview</strong>
+        <span>
+          <% if (isEditing) { %>
+            No account is selected. These blank fields preview the edit form;
+            existing account details will load here when records are connected.
+          <% } else { %>
+            Review the blank fields. Accounts are not created or saved yet.
+          <% } %>
+        </span>
+      </aside>
+
+      <%# Keep both form modes disabled until records and permission checks are connected. %>
+      <form
+        id="account-form"
+        class="account-form"
+        action="<%= isEditing ? '/admin/users/edit-preview' : '/admin/users' %>"
+        method="post"
+        autocomplete="off"
+        aria-describedby="save-note"
+      >
+        <p class="required-note">
+          Fields marked <span aria-hidden="true">*</span> are required.
+        </p>
+
+        <% if (isEditing) { %>
+          <p class="required-note">
+            Editing account details does not change the existing password.
+          </p>
+        <% } %>
+
+        <fieldset class="form-section">
+          <legend>Account details</legend>
+          <div class="form-grid">
+            <div class="form-field">
+              <label for="account-first-name">First name <span aria-hidden="true">*</span></label>
+              <input
+                id="account-first-name"
+                name="firstName"
+                type="text"
+                maxlength="80"
+                required
+              />
+            </div>
+            <div class="form-field">
+              <label for="account-last-name">Last name <span aria-hidden="true">*</span></label>
+              <input
+                id="account-last-name"
+                name="lastName"
+                type="text"
+                maxlength="80"
+                required
+              />
+            </div>
+          </div>
+          <div class="form-field">
+            <label for="account-email">Email <span aria-hidden="true">*</span></label>
+            <input
+              id="account-email"
+              name="email"
+              type="email"
+              maxlength="254"
+              required
+            />
+          </div>
+        </fieldset>
+
+        <fieldset class="form-section">
+          <legend>Role and access</legend>
+          <div class="form-grid">
+            <div class="form-field">
+              <label for="account-role">Role <span aria-hidden="true">*</span></label>
+              <select
+                id="account-role"
+                name="role"
+                required
+                aria-describedby="role-hint"
+              >
+                <option value="" disabled selected>Choose a role</option>
+                <option value="admin">Clinic Admin</option>
+                <option value="therapist">Physical Therapist</option>
+                <option value="patient">Patient</option>
+              </select>
+              <p id="role-hint" class="field-hint">
+                The role determines which features the account can access.
+              </p>
+            </div>
+            <div class="form-field">
+              <label for="account-status">Account status <span aria-hidden="true">*</span></label>
+              <select
+                id="account-status"
+                name="status"
+                required
+                aria-describedby="status-hint"
+              >
+                <option value="" disabled selected>Choose a status</option>
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+              </select>
+              <p id="status-hint" class="field-hint">
+                Active allows sign-in; Inactive prevents sign-in. This does not
+                change the patient’s care status.
+              </p>
+            </div>
+          </div>
+        </fieldset>
+
+        <% if (!isEditing) { %>
+          <fieldset class="form-section">
+            <legend>Initial password</legend>
+            <p class="section-intro">
+              Set the password for this account. Admins, therapists, and patients
+              will all sign in with their email and password.
+            </p>
+            <div class="form-grid">
+              <div class="form-field">
+                <label for="account-password">
+                  Password <span aria-hidden="true">*</span>
+                </label>
+                <input
+                  id="account-password"
+                  name="password"
+                  type="password"
+                  autocomplete="new-password"
+                  minlength="8"
+                  pattern="(?=.*[0-9])(?=.*[!@#$%^&amp;*]).*"
+                  required
+                  aria-describedby="password-hint"
+                />
+                <p id="password-hint" class="field-hint">
+                  Use at least 8 characters, a number, and one of these special
+                  characters: ! @ # $ % ^ &amp; *.
+                </p>
+              </div>
+              <div class="form-field">
+                <label for="account-password-confirm">
+                  Confirm password <span aria-hidden="true">*</span>
+                </label>
+                <input
+                  id="account-password-confirm"
+                  name="passwordConfirm"
+                  type="password"
+                  autocomplete="new-password"
+                  required
+                  aria-describedby="password-confirm-hint"
+                />
+                <p id="password-confirm-hint" class="field-hint" aria-live="polite">
+                  Enter the same password again.
+                </p>
+              </div>
+            </div>
+          </fieldset>
+        <% } %>
+
+        <div class="form-actions">
+          <button class="primary-link" type="submit" disabled>
+            <%= isEditing ? 'Save changes' : 'Save account' %>
+          </button>
+          <a class="secondary-link" href="/admin/users">Cancel</a>
+        </div>
+        <p id="save-note" class="save-note">Nothing entered here is saved.</p>
+      </form>
+    </main>
+
+    <%- include('../partials/footer', {page: 'account-form'}) %>
+    <% if (!isEditing) { %>
+      <script src="/js/account-form.js" defer></script>
+    <% } %>
+  </body>
+</html>

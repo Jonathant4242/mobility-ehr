@@ -1,0 +1,132 @@
+<section
+  id="text-consent"
+  class="intake-section"
+  aria-labelledby="text-consent-heading"
+>
+  <p class="section-number">03</p>
+  <h2 id="text-consent-heading">Text message informed consent</h2>
+  <div class="policy-copy">
+    <p>
+      I give permission to Mobility Physical Therapy, Inc. staff to communicate
+      by text message (also known as SMS). This form provides information about
+      the guidelines for text communication and how we use this form of
+      communication. It will also be used to document your consent for
+      communication with you by text message.
+    </p>
+    <h3>Conditions for the use of text messages</h3>
+    <p>
+      Mobility Physical Therapy, Inc. cannot guarantee but will use reasonable
+      means to maintain security and confidentiality of information sent and
+      received. You must acknowledge and consent to the following conditions:
+    </p>
+    <ol class="policy-list" type="a">
+      <li>
+        <p>
+          <strong>
+            IN A MEDICAL EMERGENCY, DO NOT USE CALL OR TEXT MESSAGE, CALL 911.
+          </strong>
+          Do not text message for urgent problems. If you have an urgent problem
+          during regular business hours, please call (949) 540-0301. Urgent
+          messages or needs should be relayed to us by using regular telephone
+          communication.
+        </p>
+      </li>
+      <li>
+        <p>
+          Messages should not be time-sensitive. While we try to respond to
+          messages promptly, we cannot guarantee that any particular text will
+          be read and responded to within any particular period of time. If you
+          have not heard back from us, call our office to follow up.
+        </p>
+      </li>
+      <li>
+        <p>
+          You should speak with staff members to discuss complex and/or
+          sensitive situations rather than send text messages regarding such
+          situations.
+        </p>
+      </li>
+      <li>
+        <p>
+          Clinical staff will not forward your identifiable texts to outside
+          parties without your written consent, except as authorized by law.
+        </p>
+      </li>
+      <li>
+        <p>
+          You should use your best judgment when considering the use of text
+          messages for communication of sensitive medical information. Clinical
+          staff is not responsible for the content of messages.
+        </p>
+      </li>
+      <li>
+        <p>
+          Mobility Physical Therapy, Inc. is not liable for breaches of
+          confidentiality caused by you or any third party.
+        </p>
+      </li>
+      <li>
+        <p>It is your responsibility to follow up with staff persons if warranted.</p>
+      </li>
+      <li>
+        <p>
+          It is your responsibility to attend scheduled appointments or
+          cancel/reschedule in compliance with our 24-hour policy, regardless of
+          receipt of the message. Cancellations/rescheduling of appointments
+          must be done by phone, NOT text message.
+        </p>
+      </li>
+    </ol>
+    <h3>Patient acknowledgement and agreement</h3>
+    <p>
+      I acknowledge that I have read and fully understand this consent form. I
+      understand the risks associated with the use of text messaging as a form
+      of communication between Mobility Physical Therapy, Inc. staff and me,
+      and consent to the conditions and instructions outlined, as well as any
+      other instructions that Mobility Physical Therapy, Inc. may impose to
+      communicate with me by text message. Any duplicate or copy of this
+      agreement will be treated as an original and valid for all circumstances
+      within this document.
+    </p>
+    <p>
+      <strong>
+        Ultimately, it is YOUR responsibility to remember your appointment day
+        and time.
+      </strong>
+    </p>
+  </div>
+  <div class="choice-field">
+    <label for="text-consent-acknowledgment">
+      <input
+        id="text-consent-acknowledgment"
+        name="textConsentAcknowledgment"
+        type="checkbox"
+        value="true"
+        aria-describedby="text-consent-hint"
+      />
+      <span>
+        I have read the text-message conditions and agree to receive text
+        messages.
+      </span>
+    </label>
+    <p id="text-consent-hint" class="field-hint">
+      Leave this unchecked unless you choose to receive text messages.
+    </p>
+  </div>
+  <div class="form-grid">
+    <div class="form-field">
+      <label for="text-patient-name">Patient name</label>
+      <input
+        id="text-patient-name"
+        name="textPatientName"
+        type="text"
+        maxlength="160"
+      />
+    </div>
+    <div class="form-field">
+      <label for="text-phone">Cell phone</label>
+      <input id="text-phone" name="textPhone" type="tel" maxlength="40" />
+    </div>
+  </div>
+  <%- include('signature-fields', {prefix: 'text'}) %>
+</section>

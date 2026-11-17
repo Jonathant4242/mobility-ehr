@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="/css/patient-intake.css" />
+    <link rel="stylesheet" href="/css/patient-intake-print.css" />
+    <script src="/js/patient-intake-print.js" defer></script>
+  </head>
+  <body class="patient-intake">
+    <a class="skip-link" href="#main-content">Skip to patient intake</a>
+
+    <%- include('../partials/header', {page: 'patient'}) %>
+
+    <main id="main-content" class="page-width">
+      <div class="page-heading">
+        <p class="eyebrow">Before your first visit</p>
+        <h1>New Patient Intake</h1>
+        <p class="intro">
+          Tell us about yourself and review the clinic's policies and consent
+          forms. The packet is organized into four sections.
+        </p>
+      </div>
+
+      <aside class="preview-notice" aria-label="Preview notice">
+        <strong>Preview only</strong>
+        <p>
+          Use fictional information to review this form. Nothing entered here
+          is saved or sent. Initials and typed signatures are preview fields.
+        </p>
+      </aside>
+
+      <nav class="section-nav" aria-label="Intake sections">
+        <a href="#patient-information"><span>01</span> Patient information</a>
+        <a href="#financial-policy"><span>02</span> Financial policy</a>
+        <a href="#text-consent"><span>03</span> Text-message consent</a>
+        <a href="#therapy-consent"><span>04</span> Therapy and privacy</a>
+      </nav>
+
+      <div class="packet-print-tools">
+        <button id="print-packet" class="primary-button" type="button" disabled
+          aria-describedby="print-help">Print entered packet</button>
+        <p id="print-help">
+          Prints the entries currently in this form. Use Letter paper, portrait,
+          100% scale, and turn off browser headers and footers. This does not submit or save your packet.
+        </p>
+      </div>
+
+      <%# No submission handler exists for this preview; keep submit disabled. %>
+      <form
+        id="patient-intake-form"
+        action="/intake/preview"
+        method="post"
+        autocomplete="off"
+        aria-describedby="submission-note"
+      >
+        <%- include('partials/patient-information') %>
+        <%- include('partials/financial-policy') %>
+        <%- include('partials/text-consent') %>
+        <%- include('partials/therapy-consent') %>
+
+        <div class="form-actions">
+          <p id="submission-note">
+            Submission is not available in this preview. Your entries will not
+            be saved.
+          </p>
+          <button class="primary-button" type="submit" disabled>
+            Submit intake
+          </button>
+          <a href="/patient">Back to dashboard</a>
+          <a href="#main-content">Back to top</a>
+        </div>
+      </form>
+    </main>
+
+    <%- include('../partials/footer', {page: 'patient'}) %>
+  </body>
+</html>

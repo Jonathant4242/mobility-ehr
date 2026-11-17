@@ -1,0 +1,57 @@
+<section
+  id="therapy-consent"
+  class="intake-section"
+  aria-labelledby="therapy-consent-heading"
+>
+  <p class="section-number">04</p>
+  <h2 id="therapy-consent-heading">Consent to therapy and privacy policy</h2>
+  <div class="form-field">
+    <label for="therapy-patient-name">Patient name</label>
+    <input
+      id="therapy-patient-name"
+      name="therapyPatientName"
+      type="text"
+      maxlength="160"
+    />
+  </div>
+  <div class="policy-copy">
+    <h3>Consent to therapy</h3>
+    <p>
+      I, the patient named above, hereby authorize Mobility Physical Therapy to
+      perform the procedures deemed necessary by the physical therapist during
+      my course of treatment.
+    </p>
+    <p>
+      I understand that Mobility Physical Therapy offers no guarantee of a
+      successful outcome for the condition/s that I am seeking treatment for.
+    </p>
+    <p>
+      I understand that at any time throughout my course of treatment with
+      Mobility Physical Therapy, I may consult with other therapists, physicians
+      or other medical professionals regarding my condition.
+    </p>
+    <p>
+      I understand that I may refuse or decline any forms of therapy at any time
+      provided by Mobility Physical Therapy. Any therapy performed upon me is
+      with full consent.
+    </p>
+    <p>
+      I certify that I have read the above statements and agree to the terms that
+      apply. I further agree that a photocopy of this agreement is as valid as
+      the original. I understand the risks, if any, that are associated with the
+      treatment provided by Mobility Physical Therapy.
+    </p>
+    <h3>Privacy policy</h3>
+    <p>
+      I hereby authorize and request Mobility Physical Therapy Inc. to release
+      any and all records to my insurance company, attorney, employer, case
+      manager, physician or other health care providers related to my condition
+      and/or illness being evaluated and/or treated. I hereby authorize the
+      release of any and all medical records from other health care providers
+      to Mobility Physical Therapy Inc. related to my condition. I have read and
+      understand this facility&rsquo;s privacy practices according to HIPAA
+      guidelines.
+    </p>
+  </div>
+  <%- include('signature-fields', {prefix: 'therapy'}) %>
+</section>

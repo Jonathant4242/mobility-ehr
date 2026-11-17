@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="/css/admin-dashboard.css" />
+    <link rel="stylesheet" href="/css/admin-care.css" />
+  </head>
+  <body class="admin-dashboard care-page">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <%- include('../partials/header', {page: 'intake-review'}) %>
+
+    <main id="main-content" class="page-width">
+      <div class="page-heading">
+        <div>
+          <p class="eyebrow">Clinic administration</p>
+          <h1>Intake Review</h1>
+          <p class="intro">Review submitted paperwork and assign an evaluating therapist when ready.</p>
+        </div>
+        <a class="secondary-link" href="/admin#intake-requests">Back to intake requests</a>
+      </div>
+      <aside class="preview-notice" aria-label="Prototype notice">
+        <strong>Layout preview</strong>
+        <span>No patient records are connected. Changes are not saved.</span>
+      </aside>
+
+      <section class="dashboard-section panel" aria-labelledby="request-heading">
+        <div class="panel-heading">
+          <h2 id="request-heading">Patient summary</h2>
+          <p>No submitted intake selected.</p>
+        </div>
+        <dl class="record-summary">
+          <div><dt>Patient name</dt><dd>Not connected</dd></div>
+          <div><dt>Date of birth</dt><dd>Not connected</dd></div>
+          <div><dt>Packet received on</dt><dd>Not connected</dd></div>
+        </dl>
+      </section>
+
+      <section class="dashboard-section panel" aria-labelledby="packet-heading">
+        <div class="panel-heading">
+          <h2 id="packet-heading">Submitted paperwork</h2>
+          <p>Check patient information and acknowledgments for anything that needs follow-up.</p>
+        </div>
+        <div class="packet-actions">
+          <%# Completed-packet actions need a saved submission; the blank preview is separate. %>
+          <div class="form-actions">
+            <button class="primary-link" type="button" disabled aria-describedby="packet-note">
+              View completed packet
+            </button>
+            <button class="primary-link" type="button" disabled aria-describedby="packet-note">
+              Print completed packet
+            </button>
+          </div>
+          <p id="packet-note" class="field-hint">
+            No saved submission is connected. <a href="/intake/preview">Preview the blank intake form</a>.
+          </p>
+        </div>
+      </section>
+
+      <section class="dashboard-section panel" aria-labelledby="review-heading">
+        <div class="panel-heading">
+          <h2 id="review-heading">Admin review</h2>
+          <p>This review can wait until the patient's appointment.
+            The therapist will read the same submitted packet in the application.</p>
+        </div>
+        <%# Saving requires an intake record and admin authorization. %>
+        <form
+          id="intake-review-form"
+          action="/admin/intake/review"
+          method="post"
+          autocomplete="off"
+          aria-describedby="review-save-note"
+        >
+          <fieldset class="form-section review-fields">
+            <legend class="visually-hidden">Intake review fields</legend>
+            <div class="form-field">
+              <label for="evaluating-therapist">Evaluating therapist</label>
+              <select
+                id="evaluating-therapist"
+                name="evaluatingTherapistId"
+                disabled
+                aria-describedby="therapist-hint"
+              >
+                <option value="">Choose evaluating therapist</option>
+              </select>
+              <p id="therapist-hint" class="field-hint">
+                This assignment is for the initial evaluation only.
+                Therapist selection is unavailable in this preview.
+              </p>
+            </div>
+            <div class="form-field">
+              <label for="intake-response">Response to patient (optional)</label>
+              <textarea
+                id="intake-response"
+                name="response"
+                rows="4"
+                maxlength="1000"
+                aria-describedby="response-hint"
+              ></textarea>
+              <p id="response-hint" class="field-hint">
+                Patients will see this response in their portal. Use it for missing
+                paperwork or next steps. Up to 1,000 characters.
+              </p>
+            </div>
+            <div class="form-field">
+              <label class="checkbox-label" for="flag-submission">
+                <input
+                  id="flag-submission"
+                  name="isFlagged"
+                  type="checkbox"
+                  value="true"
+                  aria-describedby="flag-hint"
+                />
+                <span>Flag inappropriate submission</span>
+              </label>
+              <p id="flag-hint" class="field-hint">
+                Mark this submission for staff review. This does not change
+                the patient’s care status.
+              </p>
+            </div>
+            <div class="form-actions">
+              <button class="primary-link" type="submit" disabled>Save review</button>
+              <a class="secondary-link" href="/admin#intake-requests">Back to intake requests</a>
+            </div>
+            <p id="review-save-note" class="field-hint">
+              Saving a review with an evaluating therapist will move a submitted intake
+              to Under Review. Nothing is saved in this preview.
+            </p>
+          </fieldset>
+        </form>
+      </section>
+    </main>
+
+    <%- include('../partials/footer', {page: 'intake-review'}) %>
+  </body>
+</html>

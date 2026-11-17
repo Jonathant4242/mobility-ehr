@@ -1,4 +1,343 @@
-/*
- * TODO: Consolidate shared typography,
- * spacing, navigation, and reusable controls once the admin layouts settle.
- */
+/* Shared application foundations and controls; page layouts stay in their own stylesheets. */
+
+:is(.admin-dashboard, .pt-dashboard, .patient-dashboard, .login-page)
+  .page-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 20px;
+}
+
+:is(.admin-dashboard, .pt-dashboard, .patient-dashboard, .login-page),
+.patient-intake {
+  --ink: #18382e;
+  --muted: #52665d;
+  --line: #d9e3dc;
+  --accent: #245f4e;
+  margin: 0;
+  background: #f4f7f3;
+  color: var(--ink);
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+:is(.admin-dashboard, .pt-dashboard, .patient-dashboard, .login-page) *,
+:is(.admin-dashboard, .pt-dashboard, .patient-dashboard, .login-page) *::before,
+:is(.admin-dashboard, .pt-dashboard, .patient-dashboard, .login-page) *::after,
+.patient-intake *,
+.patient-intake *::before,
+.patient-intake *::after {
+  box-sizing: border-box;
+}
+
+:is(.admin-dashboard, .pt-dashboard, .patient-dashboard, .login-page)
+  .page-width,
+.patient-intake .page-width {
+  margin-inline: auto;
+}
+
+:is(.admin-dashboard, .pt-dashboard, .patient-dashboard, .login-page) a,
+.patient-intake a {
+  color: var(--accent);
+  text-underline-offset: 0.25em;
+}
+
+:is(.admin-dashboard, .pt-dashboard, .patient-dashboard, .login-page)
+  :focus-visible,
+.patient-intake :focus-visible {
+  outline: 3px solid #9c570a;
+  outline-offset: 4px;
+}
+
+:is(.admin-dashboard, .pt-dashboard, .patient-dashboard, .login-page) h1,
+:is(.admin-dashboard, .pt-dashboard, .patient-dashboard, .login-page) h2,
+:is(.admin-dashboard, .pt-dashboard, .patient-dashboard, .login-page) h3,
+:is(.admin-dashboard, .pt-dashboard, .patient-dashboard, .login-page) p,
+.patient-intake h1,
+.patient-intake h2,
+.patient-intake h3,
+.patient-intake p {
+  margin: 0;
+}
+
+:is(.admin-dashboard, .pt-dashboard, .patient-dashboard, .login-page) h1,
+.patient-intake h1 {
+  letter-spacing: -0.04em;
+}
+
+:is(.admin-dashboard, .pt-dashboard, .patient-dashboard, .login-page)
+  .skip-link,
+.patient-intake .skip-link {
+  position: absolute;
+  top: -100px;
+  left: 16px;
+  padding: 12px 18px;
+  background: white;
+}
+
+:is(.admin-dashboard, .pt-dashboard, .patient-dashboard, .login-page)
+  .skip-link:focus,
+.patient-intake .skip-link:focus {
+  top: 12px;
+}
+
+:is(.admin-dashboard, .pt-dashboard, .patient-dashboard, .login-page)
+  .site-header,
+.patient-intake .site-header {
+  background: white;
+  border-bottom: 1px solid var(--line);
+}
+
+:is(.admin-dashboard, .pt-dashboard, .patient-dashboard, .login-page)
+  .header-content,
+.patient-intake .header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 20px;
+}
+
+:is(.admin-dashboard, .pt-dashboard, .patient-dashboard, .login-page) .brand,
+.patient-intake .brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  font-size: 1.3rem;
+  font-weight: 750;
+}
+
+:is(.admin-dashboard, .pt-dashboard, .patient-dashboard, .login-page)
+  .brand-mark,
+.patient-intake .brand-mark {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: var(--accent);
+  color: white;
+}
+
+:is(.admin-dashboard, .pt-dashboard, .patient-dashboard, .login-page) .intro,
+.patient-intake .intro {
+  color: var(--muted);
+}
+
+:is(.admin-dashboard, .pt-dashboard, .patient-dashboard, .login-page)
+  .preview-notice,
+.patient-intake .preview-notice {
+  background: #e9f0e9;
+  border: 1px solid var(--line);
+}
+
+:is(.admin-dashboard, .pt-dashboard, .patient-dashboard, .login-page)
+  .site-footer,
+.patient-intake .site-footer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.intake-page .form-section,
+.resource-form-page .form-section,
+.account-form-page .form-section,
+.care-page .form-section {
+  min-inline-size: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.intake-page .form-section + .form-section,
+.resource-form-page .form-section + .form-section,
+.account-form-page .form-section + .form-section,
+.care-page .form-section + .form-section {
+  margin-top: 28px;
+}
+
+.intake-page .form-section legend,
+.resource-form-page .form-section legend,
+.account-form-page .form-section legend,
+.care-page .form-section legend {
+  max-width: 100%;
+  padding: 0;
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.intake-page .section-intro,
+.resource-form-page .section-intro,
+.account-form-page .section-intro,
+.care-page .section-intro {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.intake-page .required-note,
+.resource-form-page .required-note,
+.account-form-page .required-note,
+.care-page .required-note {
+  margin-bottom: 24px;
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+.intake-page .form-grid,
+.resource-form-page .form-grid,
+.account-form-page .form-grid,
+.care-page .form-grid,
+.patient-intake .form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.intake-page .form-field,
+.resource-form-page .form-field,
+.account-form-page .form-field,
+.care-page .form-field,
+.patient-intake .form-field {
+  min-width: 0;
+}
+
+.intake-page .form-section > .form-field,
+.resource-form-page .form-section > .form-field,
+.account-form-page .form-section > .form-field,
+.care-page .form-section > .form-field {
+  margin-top: 18px;
+}
+
+.intake-page .form-field label,
+.resource-form-page .form-field label,
+.account-form-page .form-field label,
+.care-page .form-field label,
+.patient-intake .form-field label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 650;
+}
+
+.intake-page .form-field input:not([type='checkbox']),
+.intake-page .form-field select,
+.intake-page .form-field textarea,
+.resource-form-page .form-field input,
+.account-form-page .form-field input,
+.care-page .form-field input:not([type='checkbox']),
+.resource-form-page .form-field select,
+.account-form-page .form-field select,
+.care-page .form-field select,
+.resource-form-page .form-field textarea,
+.account-form-page .form-field textarea,
+.care-page .form-field textarea,
+.patient-intake .form-field input,
+.patient-intake .form-field select,
+.patient-intake .form-field textarea {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  min-height: 48px;
+  padding: 10px 12px;
+  border: 1px solid #7a9083;
+  border-radius: 6px;
+  background: white;
+  color: var(--ink);
+  font: inherit;
+}
+
+.intake-page .form-field textarea,
+.resource-form-page .form-field textarea,
+.account-form-page .form-field textarea,
+.care-page .form-field textarea,
+.patient-intake .form-field textarea {
+  resize: vertical;
+}
+
+.intake-page .field-hint,
+.resource-form-page .field-hint,
+.account-form-page .field-hint,
+.care-page .field-hint {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.intake-page .form-actions,
+.resource-form-page .form-actions,
+.account-form-page .form-actions,
+.care-page .form-actions,
+.patient-intake .form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.intake-page .form-actions .primary-link,
+.resource-form-page .form-actions .primary-link,
+.account-form-page .form-actions .primary-link,
+.care-page .form-actions .primary-link,
+.patient-dashboard button.primary-link {
+  min-height: 48px;
+  max-width: 100%;
+  border: 0;
+  font-family: inherit;
+  white-space: normal;
+}
+
+.intake-page .form-actions .primary-link:disabled,
+.intake-page .form-actions .primary-link:disabled:hover,
+.resource-form-page .form-actions .primary-link:disabled,
+.account-form-page .form-actions .primary-link:disabled,
+.care-page .form-actions .primary-link:disabled,
+.resource-form-page .form-actions .primary-link:disabled:hover,
+.account-form-page .form-actions .primary-link:disabled:hover,
+.care-page .form-actions .primary-link:disabled:hover,
+.patient-dashboard button.primary-link:disabled,
+.patient-dashboard button.primary-link:disabled:hover {
+  background: #e0e7e1;
+  color: var(--muted);
+  cursor: not-allowed;
+}
+
+.intake-page .secondary-link,
+.resource-form-page .secondary-link,
+.account-form-page .secondary-link,
+.care-page .secondary-link {
+  display: inline-flex;
+  align-items: center;
+  padding-block: 8px;
+}
+
+:is(.admin-dashboard, .pt-dashboard, .patient-dashboard, .login-page)
+  .form-field
+  .checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  min-height: 44px;
+  margin-top: 12px;
+  font-size: 0.875rem;
+  font-weight: 400;
+  cursor: pointer;
+}
+:is(.admin-dashboard, .pt-dashboard, .patient-dashboard, .login-page)
+  .checkbox-label
+  input {
+  flex: 0 0 20px;
+  width: 20px;
+  height: 20px;
+  margin: 2px 0 0;
+  accent-color: var(--accent);
+}

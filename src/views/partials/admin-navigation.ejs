@@ -1,0 +1,29 @@
+<%# Form pages highlight the section they belong to. %>
+<nav aria-label="Main navigation">
+  <a
+    href="/admin"
+    <% if (page === 'dashboard') { %>
+      aria-current="page"
+    <% } else if (page === 'intake-review') { %>
+      aria-current="location"
+    <% } %>
+  >Dashboard</a>
+
+  <a
+    href="/admin/users"
+    <% if (page === 'users') { %>
+      aria-current="page"
+    <% } else if (page === 'account-form') { %>
+      aria-current="location"
+    <% } %>
+  >Users</a>
+
+  <a
+    href="/admin/resources"
+    <% if (page === 'resources') { %>
+      aria-current="page"
+    <% } else if (page === 'resource-form') { %>
+      aria-current="location"
+    <% } %>
+  >Resources</a>
+</nav>

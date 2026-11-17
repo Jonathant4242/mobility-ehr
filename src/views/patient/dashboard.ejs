@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="/css/admin-dashboard.css" />
+  </head>
+  <body class="patient-dashboard">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <%- include('../partials/header', {page: 'patient-dashboard'}) %>
+
+    <main id="main-content" class="page-width">
+      <div class="page-heading">
+        <div>
+          <p class="eyebrow">Patient portal</p>
+          <h1>Patient Dashboard</h1>
+          <p class="intro">View your paperwork, care status, progress journal, and education resources.</p>
+        </div>
+      </div>
+
+      <aside class="preview-notice" aria-label="Prototype notice">
+        <strong>Layout preview</strong>
+        <span>No patient records are connected. Saving and account access are not available yet.</span>
+      </aside>
+
+      <section class="dashboard-section panel" aria-labelledby="intake-heading">
+        <div class="panel-heading page-heading">
+          <div>
+            <h2 id="intake-heading">Intake paperwork</h2>
+            <p>Complete your patient information and review the clinic's policies.</p>
+          </div>
+          <a class="primary-link" href="/intake/preview">Preview intake form</a>
+        </div>
+        <div class="panel-heading">
+          <h3>Response from the clinic</h3>
+          <p>No intake response connected.</p>
+        </div>
+      </section>
+
+      <section class="dashboard-section panel" aria-labelledby="status-heading">
+        <div class="panel-heading">
+          <h2 id="status-heading">Care status and history</h2>
+          <p>Current care status: <strong>Not connected</strong></p>
+        </div>
+        <div class="table-container" role="region" aria-label="Your care status history" tabindex="0">
+          <table>
+            <caption class="visually-hidden">Your care status history preview</caption>
+            <thead>
+              <tr>
+                <th scope="col">Previous status</th>
+                <th scope="col">New status</th>
+                <th scope="col">Changed by</th>
+                <th scope="col">Date and time</th>
+              </tr>
+            </thead>
+            <tbody>
+              <%# Show an empty state until the signed-in patient's records are connected. %>
+              <tr>
+                <td colspan="4" class="empty-state">
+                  <p>No status history connected. Changes to your care status will appear here.</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="progress-journal" class="dashboard-section panel" aria-labelledby="journal-heading">
+        <div class="panel-heading page-heading">
+          <div>
+            <h2 id="journal-heading">My progress journal</h2>
+            <p>Keep a short record of your symptoms or progress.</p>
+          </div>
+          <a class="primary-link" href="/patient/journal/new" aria-describedby="journal-note">
+            Add journal entry
+          </a>
+        </div>
+        <div class="table-container" role="region" aria-label="Your progress journal" tabindex="0">
+          <table>
+            <caption class="visually-hidden">Your progress journal preview</caption>
+            <thead>
+              <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Entry</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td colspan="3" class="empty-state">
+                  <p>No journal entries connected. Your entries and their edit and delete actions will appear here.</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p id="journal-note" class="panel-note">
+          Add journal entry opens the blank form. You can also
+          <a href="/patient/journal/edit-preview">preview editing an entry</a>.
+          Saving and deleting remain unavailable.
+        </p>
+      </section>
+
+      <section class="dashboard-section panel" aria-labelledby="resources-heading">
+        <div class="panel-heading">
+          <h2 id="resources-heading">Education resources</h2>
+          <p>Read patient education materials published by your clinic.</p>
+        </div>
+        <div class="empty-state">
+          <p>No resources connected. Published resources will appear here.</p>
+        </div>
+      </section>
+    </main>
+
+    <%- include('../partials/footer', {page: 'patient-dashboard'}) %>
+  </body>
+</html>
